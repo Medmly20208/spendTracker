@@ -3,6 +3,9 @@ import React,{useState} from 'react'
 //logo
 import Logo from "../assets/images/logoIcon.png"
 
+//components
+import HeaderNav from './HeaderNav'
+
 
 const Header = () => {
 
@@ -20,27 +23,28 @@ const Header = () => {
      }
     };
 
-    console.log("render")
 
   return (
-    <header className={`flex justify-between items-center py-[10px] sm:px-[80px] fixed top-[0px] left-[0px] backdrop-blur-lg w-screen z-[1000] ${isBottomBorderShown?'border-b-2':' '}`}>
+    <header className={`flex justify-between items-center py-[10px] px-[30px] sm:px-[80px] fixed top-[0px] left-[0px] backdrop-blur-lg w-screen z-[1000] ${isBottomBorderShown?'border-b-2':' '}`}>
       
         <div>
             <img src={Logo} alt="platform logo" className='w-[50px]'/>
         </div>
-        <div>
+        <div className='hidden sm:block'>
             <nav>
                 <ul className='flex gap-[20px]'>
-                    <li className={ListStyle}>Pricing</li>
-                    <li className={ListStyle}>Features</li>
-                    <li  className={ListStyle}>Testimonials</li>
+                    
+                    <li className="listItem"><a href="#Features">Features</a> </li>
+                    <li className="listItem"><a href="#Testimonials">Testimonials</a></li>
+                    <li className="listItem"><a href="#How_it_works">How it works</a></li>
                 </ul>
             </nav>
         </div>
-        <div className='flex gap-[10px]'>
+        <div className='hidden gap-[10px] sm:flex'>
             <button className='primaryBtn'>Login</button>
             <button className='mainBtn'>Register</button>
         </div>
+        <HeaderNav/>
     </header>
   )
 }
