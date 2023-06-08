@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 
+import { Link } from 'react-router-dom'
+
 //logo
 import Logo from "../assets/images/logoIcon.png"
 
@@ -41,8 +43,9 @@ const Header = () => {
             </nav>
         </div>
         <div className='hidden gap-[10px] sm:flex'>
-            <button className='primaryBtn'>Login</button>
-            <button className='mainBtn'>Register</button>
+            <Link className='primaryBtn' to="login">Login</Link>
+            <Link className='mainBtn' to="register">Register</Link>
+      
         </div>
         <HeaderNav/>
     </header>

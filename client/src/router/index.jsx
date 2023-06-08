@@ -5,6 +5,8 @@ import { createBrowserRouter ,Outlet } from "react-router-dom";
 //pages
 import Landing from "../pages/Landing";
 import Error from "../pages/Error";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 
 export const router = createBrowserRouter([
@@ -15,11 +17,11 @@ export const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <div>Login</div>,
+        element: <Login/>,
     },
     {
         path: "/register",
-        element: <div>Register</div>,
+        element: <Register/>,
     },
     {
         path: "/forgot-password",
