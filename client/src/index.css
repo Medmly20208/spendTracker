@@ -15,8 +15,12 @@
     .primaryBtn {
         @apply bg-white border transition-all duration-100 text-main-red border-main-red rounded-md px-[15px] py-[8px] hover:text-white hover:bg-main-red;
     }
+    .listItem{
+        @apply hover:text-main-red cursor-pointer font-thin
+    }
 }
 
 *{
     font-family: "Kollektif", sans-serif;
+    scroll-behavior: smooth;
 }

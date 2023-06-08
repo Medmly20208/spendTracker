@@ -42,7 +42,7 @@ const Testimonials = () => {
       
 
   return (
-    <div className='mt-[100px]'>
+    <div id="Testimonials" className='mt-[100px]'>
         <SectionTitle title='Testimonials'/>
         <div className='flex flex-wrap gap-[20px] mt-[40px] justify-center'>
             {testimonials.map((testimonial, index) => {
