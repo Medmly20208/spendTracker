@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 
+//react-router-dom
+import { Link } from 'react-router-dom'
 
 //icons
 import { Bars3BottomRightIcon } from '@heroicons/react/24/outline'
@@ -31,8 +33,8 @@ const HeaderNav = () => {
                     <li className="listItem border px-[20px] py-[10px] border-black hover:border-main-red rounded-md"><a href="#Features">Features</a> </li>
                     <li className="listItem border px-[20px] py-[10px] border-black hover:border-main-red rounded-md"><a href="#Testimonials">Testimonials</a></li>
                     <li className="listItem border px-[20px] py-[10px] border-black hover:border-main-red rounded-md"><a href="#How_it_works">How it works</a></li>
-                    <li><button className='primaryBtn  w-full'>Login</button></li>
-                    <li><button className='mainBtn w-full'>Register</button></li>
+                    <li className='w-full'><Link className='primaryBtn w-full block' to="login">Login</Link></li>
+                    <li className='w-full'><Link className='mainBtn w-full block' to="register">Register</Link></li>
                 </ul>
             </nav>
            
