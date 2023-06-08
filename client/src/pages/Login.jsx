@@ -94,7 +94,7 @@ const Login = () => {
               
                 <input
                   type="text"
-                  className={inputClass}
+                  className={inputClass+ " focus:border-main-red"}
                   placeholder="email"
                 ></input>
               </div>
@@ -117,14 +117,14 @@ const Login = () => {
                
               </div>
 
-              <a
-                
+              <Link
+                to="/user"
                 className="mainBtn w-full block text-center mt-[10px] cursor-pointer"
               >
                 Login
-              </a>
+              </Link>
             </form>
-            <div className="text-center">
+            <div className="text-center w-full">
                 <p>Don't have an account ? <Link className="text-main-red underline" to="/register">Create an account</Link></p>
             </div>
           </div>
