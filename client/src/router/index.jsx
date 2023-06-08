@@ -2,11 +2,25 @@ import { createBrowserRouter ,Outlet } from "react-router-dom";
 
 
 
+//components
+import Notifications from "../components/Notifications";
+import Dashboard from "../components/Dashboard";
+import Profile from "../components/Profile";
+import Reports from "../components/Reports";
+import Chat from "../components/Chat";
+import Advisor from "../components/Advisor";
+import News from "../components/News";
+
+
+
 //pages
 import Landing from "../pages/Landing";
 import Error from "../pages/Error";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Container from "../components/Container";
+
+
 
 
 export const router = createBrowserRouter([
@@ -33,31 +47,36 @@ export const router = createBrowserRouter([
     },
      {
         path:"/user",
-        element:<><div>User</div> <Outlet/></>,
+        element:<Container/>,
         children:[
             {  
                 path: "dashboard",
-                element: <div>Dashboard</div>,
+                element: <Dashboard/>,
             },
             {
                 path: "profile",
-                element: <div>Profile</div>,
+                element: <Profile/>,
             },
             {
                 path: "notifications",
-                element: <div>Notifications</div>,
+                element: <Notifications/>,
             },
             {
                 path: "reports",
-                element :<div>Reports</div>
+                element :<Reports/>
             },
             {
                 path: "chat",
-                element :<div>Chat</div>
+                element :<Chat/>
             },
             {
-                path: "financeAdvisor",
-                element :<div>Finance Advisor</div>
+                path: "advisor",
+                element :<Advisor/>
+            },
+            {
+                path:"news",
+                element:<News/>
+
             }
         ]
 
