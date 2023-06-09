@@ -8,7 +8,6 @@ import Dashboard from "../components/Dashboard";
 import Profile from "../components/Profile";
 import Reports from "../components/Reports";
 import Chat from "../components/Chat";
-import Advisor from "../components/Advisor";
 import News from "../components/News";
 
 
@@ -69,10 +68,7 @@ export const router = createBrowserRouter([
                 path: "chat",
                 element :<Chat/>
             },
-            {
-                path: "advisor",
-                element :<Advisor/>
-            },
+          
             {
                 path:"news",
                 element:<News/>
