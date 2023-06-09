@@ -11,7 +11,7 @@ const Chart = (props) => {
       <ReactApexChart
         options={props.options}
         series={props.series}
-        type={props.type}
+        type={props.type || "area"}
       />
     </div>
   );

@@ -28,7 +28,6 @@ const Nav = (props) => {
   const navigate = useNavigate();
 
   const [selectedNav, setSelectedNav] = useState(location.pathname.slice(1).split("/")[1]);
-  console.log(selectedNav)
   const navItemClass =
     "w-[40px] h-[40px] p-[5px]  text-white hover:bg-secondary-green cursor-pointer transition-all duration-300 rounded-md";
 
@@ -105,12 +104,7 @@ const Nav = (props) => {
                 selectedNav={selectedNav}
                 icon={<ChatBubbleOvalLeftEllipsisIcon className="!w-[1.5em]" />}
               />
-             <NavItem
-                path="Advisor"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<PhoneIcon className="!w-[1.5em]" />}
-              />
+          
              <NavItem
                 path="News"
                 setSelectedNav={setSelectedNav}
