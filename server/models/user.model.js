@@ -10,6 +10,14 @@ const user = mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    firstName:{
+      type:String,
+      required:true,
+    },
+    lastName:{
+      type:String,
+      required:true,
+    },
     password: {
       type: String,
       required: true,
@@ -17,11 +25,7 @@ const user = mongoose.Schema(
       required: true,
     },
 
-    active: {
-      type: Boolean,
-      default: true,
-      select: false,
-    },
+   
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
     changedPassword: Date,
@@ -43,7 +47,7 @@ user.statics.login = async function (email, password) {
   return user;
 };
 
-user.statics.signup = async function (email, password, type) {
+user.statics.signup = async function (email, password,firstName,lastName ) {
   const user = await this.findOne({ email });
 
   if (user) {
@@ -53,7 +57,7 @@ user.statics.signup = async function (email, password, type) {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  const newUser = await this.create({ email, password: hashedPassword, type });
+  const newUser = await this.create({ email, password: hashedPassword,  firstName, lastName});
 
   return newUser;
 };

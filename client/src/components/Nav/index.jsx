@@ -38,7 +38,7 @@ const Nav = (props) => {
 
   const logOut = () => {
     //localStorage.setItem("userData", null);
-    //localStorage.setItem("token", null);
+    localStorage.setItem("token", null);
     navigate("/", { replace: true });
   };
 
