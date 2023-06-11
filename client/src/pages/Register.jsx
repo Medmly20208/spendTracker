@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 //components
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
+import Error from "../components/Error";
 
+//react-router-dom
+import { useNavigate } from "react-router-dom";
 
 //assets
 import Logo from "../assets/images/logoIcon.png";
@@ -14,6 +17,8 @@ import Logo from "../assets/images/logoIcon.png";
 //icons
 import {EyeIcon,EyeSlashIcon} from "@heroicons/react/24/outline"
 
+
+import { useRegisterMutation } from "../api/apiSlice";
 
 const inputClass =
 "mt-[5px] mb-[8px] outline-none w-full border border-gray-400 rounded-md p-[8px] text-black   ";
@@ -36,6 +41,13 @@ var settings = {
 
 const Login = () => {
 
+  const [register,{data,isSuccess,isError,error,isLoading}] = useRegisterMutation()
+  const navigate = useNavigate()
+  const [email,setEmail] = useState("")
+  const [firstName,setFirstName] = useState("")
+  const [lastName,setLastName] = useState("")
+  const [password,setPassword] = useState("")
+  const [confirmPassword,setCofirmPassword] = useState("")
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
@@ -44,9 +56,17 @@ const Login = () => {
   const toggleConfirmPasswordVisibility = () => {setIsConfirmPasswordVisible(!isConfirmPasswordVisible)}
    
 
+const signup=()=>{
+  register({email,firstName,lastName,password,confirmPassword})
+}
+  if(isSuccess){
+    localStorage.setItem("token",data.token)
+    localStorage.setItem("id",data.data.id)
+    navigate("/user/dashboard")
+  }
 
-
-  return (
+  console.log(error)
+ return (
     <>
       <div className="flex flex-center max-h-screen overflow-hidden">
         <div className="hidden sm:block">
@@ -96,9 +116,34 @@ const Login = () => {
               
                 <input
                   type="text"
-                  className={inputClass+ " focus:border-main-red"}
+                  onChange={(e)=>setEmail(e.target.value)}
+                  className={inputClass+ "w-full focus:border-main-red"}
                   placeholder="email"
                 ></input>
+              </div>
+              <div className="flex justify-between flex-wrap gap-[10px] ">
+              <div className="w-full sm:w-[49%]">
+                <label>First name : </label>
+                <br />
+              
+                <input
+                  type="text"
+                  onChange={(e)=>setFirstName(e.target.value)}
+                  className={inputClass+ "w-full focus:border-main-red"}
+                  placeholder="first name"
+                ></input>
+              </div>
+              <div className="w-full sm:w-[49%]">
+                <label>Last Name : </label>
+                <br />
+              
+                <input
+                  type="text"
+                  onChange={(e)=>setLastName(e.target.value)}
+                  className={inputClass+ " focus:border-main-red"}
+                  placeholder="last name"
+                ></input>
+              </div>
               </div>
               <div>
                 <label>Password :</label>
@@ -106,6 +151,7 @@ const Login = () => {
 
                 
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   type={isPasswordVisible?"text":"password"}
                   className={"border-none outline-none w-full" }
                   placeholder="password"
@@ -124,6 +170,7 @@ const Login = () => {
 
                 
                 <input
+                  onChange={(e)=>setCofirmPassword(e.target.value)}
                   type={isConfirmPasswordVisible?"text":"password"}
                   className={"border-none outline-none w-full" }
                   placeholder="password"
@@ -137,12 +184,13 @@ const Login = () => {
                
               </div>
               <a
-                
+                onClick={signup}
                 className="mainBtn w-full block text-center mt-[10px] cursor-pointer"
               >
-                Register
+               {isLoading ?"loading":"Register"} 
               </a>
             </form>
+            {isError && <Error message={error.data.message}/>}
             <div className="text-center w-full">
                 <p>You already have an account ? <Link className="text-main-red underline" to="/login">Log in</Link></p>
             </div>

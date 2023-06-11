@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 //icon
 import { Icon } from "@iconify/react";
@@ -11,9 +11,15 @@ import MonthData from "./MonthData";
 import WeekData from "./WeekData";
 import ChartCard from "./ChartCard";
 
+import { useGetExpensesQuery } from "../../api/apiSlice";
+
+//utils
+import {getCurrentDate} from "../../utils"
 
 
 const Dashboard = () => {
+
+ 
   
   return (
     
@@ -32,8 +38,9 @@ const Dashboard = () => {
 
           <div className="flex gap-[5px] items-center mb-[20px] text-[16px] text-gray-500">
             <Icon icon={"solar:calendar-linear"} className="text-[25px]" />
-            <p>24 May,2023</p>
+            <p>{getCurrentDate()}</p>
           </div>
+          
           <div className="flex flex-col gap-[25px]">
           <TodayData/>
           <WeekData/>

@@ -1,12 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 import Chart from "../Chart"
 
+//Rtk query
+import { useGetExpensesQuery } from '../../api/apiSlice'
+
 const ChartCard = () => {
 
+   const [startDate,setStartDate] = useState("2023-06-04")
+   const [endDate,setEndDate] = useState("2023-06-12")
    
+   const {data:expenses} = useGetExpensesQuery({userId:localStorage.getItem("id"),endDate,startDate}) 
    
-   
+
+    console.log(expenses)
     
     const data = {
         series: [
@@ -83,11 +90,11 @@ const ChartCard = () => {
         <h1 className='text-2xl font-bold mb-[10px]'>Chart</h1>
         <div className='flex gap-[20px] '>
             <div>
-                from : <input type="date" name="from" id="from" className='px-[10px] py-[5px] border
+                from : <input onChange={(e)=>setEndDate(e.target.value)} type="date" name="from" id="from" className='px-[10px] py-[5px] border
              border-gray-500 rounded-3xl' defaultValue={"2023-01-24"} />
             </div>
             <div>
-                to : <input type="date" name="to" id="to" className='px-[10px] py-[5px] border
+                to : <input onChange={(e)=>setEndDate(e.target.value)} type="date" name="to" id="to" className='px-[10px] py-[5px] border
              border-gray-500 rounded-3xl' defaultValue={"2023-05-24"}/>
             </div>
         </div>

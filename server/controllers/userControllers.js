@@ -42,7 +42,7 @@ exports.SignUp = (req, res, next) => {
     return next(new AppError("password aren't the same", 404));
   }
 
-  User.signup(req.body.email, req.body.password, req.body.type)
+  User.signup(req.body.email, req.body.password, req.body.firstName, req.body.lastName)
     .then((user) => {
       const token = createToken(user._id);
       return res.json({
@@ -85,3 +85,5 @@ exports.LogIn = (req, res) => {
       });
     });
 };
+
+

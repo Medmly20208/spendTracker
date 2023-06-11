@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const usersRouter = require("./routes/usersRouter");
+const expensesRouter = require("./routes/expensesRouter")
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -20,6 +21,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/expenses",expensesRouter)
 
 app.all("*", (req, res, next) => {
   next(

@@ -2,17 +2,40 @@ import React from 'react'
 
 import ValueCard from './ValueCard'
 
+import { useGetExpensesQuery } from '../../api/apiSlice'
+
+
+import { getCurrentDate,addDays } from '../../utils'
+
 const WeekData = () => {
+  const {data:expenses} = useGetExpensesQuery({userId:localStorage.getItem("id"),endDate:addDays(getCurrentDate(),0),startDate:addDays(getCurrentDate(),-7)}) 
+
+
+  console.log("week",expenses)
+
+  const Amounts = {
+   "Food":0,
+   "Transportation":0,
+   "Other":0,
+   "Entertainment":0,
+   "Shelter":0,
+   "Total":0
+
+  }
+  expenses?.data.map((item)=>{
+      Amounts[item.category]+=item.amount
+      Amounts["Total"]+=item.amount
+  })
   return (
     <div>
         <h1 className='text-2xl font-bold mb-[10px]'>This week</h1>
         <div className='flex gap-[10px] flex-wrap'>
-            <ValueCard title="Total" amount="28" color="green"/>
-            <ValueCard title="Food" amount="10" color="orange"/>
-            <ValueCard title="Transportation" amount="12" color="yellow"/>
-            <ValueCard title="Shelter" amount="13" color="blue"/>
-            <ValueCard title="Entertainement" amount="5" color="amber"/>
-            <ValueCard title="Other" amount="8" color="green"/>
+        <ValueCard title="Total" amount={Amounts["Total"]}/>
+            <ValueCard title="Food" amount={Amounts["Food"]}/>
+            <ValueCard title="Transportation" amount={Amounts["Transportation"]} />
+            <ValueCard title="Shelter" amount={Amounts["Shelter"]}/>
+            <ValueCard title="Entertainment" amount={Amounts["Entertainment"]} />
+            <ValueCard title="Other" amount={Amounts["Other"]} />
 
            
         </div>

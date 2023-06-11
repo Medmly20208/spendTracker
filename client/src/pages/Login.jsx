@@ -1,11 +1,12 @@
 import React,{useState} from "react";
 
 //react-router-dom
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
 //components
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
+import Error from "../components/Error";
 
 
 //assets
@@ -14,6 +15,8 @@ import Logo from "../assets/images/logoIcon.png";
 //icons
 import {EyeIcon,EyeSlashIcon} from "@heroicons/react/24/outline"
 
+//rtk query
+import { useLoginMutation } from "../api/apiSlice";
 
 const inputClass =
 "mt-[5px] mb-[8px] outline-none w-full border border-gray-400 rounded-md p-[8px] text-black   ";
@@ -37,12 +40,25 @@ var settings = {
 const Login = () => {
 
 
+
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const navigate = useNavigate("")
+  const [login,{data,isSuccess,error,isError,isLoading}] = useLoginMutation()
 
   const togglePasswordVisibility = () => {setIsPasswordVisible(!isPasswordVisible)}
    
 
+  const loginHandler = ()=>{
+    login({email,password})
+  }
 
+  if(isSuccess){
+    localStorage.setItem("token",data.token)
+    localStorage.setItem("id",data.data.id)
+    navigate("/user/Dashboard")
+  }
 
   return (
     <>
@@ -93,6 +109,7 @@ const Login = () => {
                 <br />
               
                 <input
+                onChange={(e)=>setEmail(e.target.value)}
                   type="text"
                   className={inputClass+ " focus:border-main-red"}
                   placeholder="email"
@@ -104,6 +121,7 @@ const Login = () => {
 
                 
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   type={isPasswordVisible?"text":"password"}
                   className={"border-none outline-none w-full" }
                   placeholder="password"
@@ -117,12 +135,13 @@ const Login = () => {
                
               </div>
 
-              <Link
-                to="/user"
+              <a
+                onClick={loginHandler}
                 className="mainBtn w-full block text-center mt-[10px] cursor-pointer"
               >
-                Login
-              </Link>
+                {isLoading?"loading...":"Connect"}
+              </a>
+              {isError && <Error message={error.data.message}/>}
             </form>
             <div className="text-center w-full">
                 <p>Don't have an account ? <Link className="text-main-red underline" to="/register">Create an account</Link></p>

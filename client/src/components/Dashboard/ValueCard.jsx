@@ -25,7 +25,7 @@ const ValueCard = (props) => {
       color:"#3b82f6",
       icon:<House size={15} />
     },
-    "Entertainement":{
+    "Entertainment":{
       color:"#8b5cf6",
       icon:<Monitor size={15}/>
     }
@@ -36,7 +36,6 @@ const ValueCard = (props) => {
 
    
    
-   
   return (
 <div style={{borderBottomColor:styles[title]?.color}} className={ "w-[160px] p-[20px]   flex flex-col gap-[10px] justify-center items-center border-b-2 "}>
     <div className='flex gap-[5px] items-center px-[4px] py-[2px] rounded-md' style={{backgroundColor:styles[title]?.color,color:styles[title]?.color}}>
@@ -44,7 +43,7 @@ const ValueCard = (props) => {
       <h2 className={'text-sm !opacity-100 text-white'}>{title}</h2>
     </div>
     
-    <p className='text-2xl font-bold'>{amount} $</p>
+    <p className='text-2xl font-bold'>{typeof amount==="number"?amount.toFixed(2):amount} $</p>
 </div>
   )
 }

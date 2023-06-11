@@ -10,10 +10,10 @@
 
 @layer components {
     .mainBtn {
-        @apply bg-main-red border transition-all duration-100 text-white border-main-red rounded-md px-[15px] py-[8px] hover:text-main-red hover:bg-white;
+        @apply bg-main-red border cursor-pointer transition-all duration-100 text-white border-main-red rounded-md px-[15px] py-[8px] hover:text-main-red hover:bg-white;
     }
     .primaryBtn {
-        @apply bg-white border transition-all duration-100 text-main-red border-main-red rounded-md px-[15px] py-[8px] hover:text-white hover:bg-main-red;
+        @apply bg-white border cursor-pointer transition-all duration-100 text-main-red border-main-red rounded-md px-[15px] py-[8px] hover:text-white hover:bg-main-red;
     }
     .listItem{
         @apply hover:text-main-red cursor-pointer font-thin
@@ -23,4 +23,9 @@
 *{
     font-family: "Kollektif", sans-serif;
     scroll-behavior: smooth;
+}
+
+th,td{
+    border: 1px solid gray;
+    padding: 10px;
 }
