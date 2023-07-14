@@ -29,3 +29,13 @@ th,td{
     border: 1px solid gray;
     padding: 10px;
 }
+
+.successMessages{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10000;
+  }
