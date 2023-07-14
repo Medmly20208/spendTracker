@@ -12,17 +12,25 @@ import { useDispatch } from "react-redux";
 //uuid4
 import { v4 as uuidv4 } from "uuid";
 
-const NewExpenseForm = () => {
+const NewExpenseForm = (props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("Food");
   const [date, setDate] = useState(getCurrentDate());
+  const [formError, setFormError] = useState(null);
   const dispatch = useDispatch();
 
   const [addExpense, { data, isSuccess, isError, error, isLoading }] =
     useAddExpenseMutation();
 
   const newExpenseHandler = () => {
+    if (title.trim().length === 0) {
+      setFormError("required fields are empty");
+      return;
+    } else {
+      setFormError(null);
+    }
+
     addExpense({
       userId: localStorage.getItem("id"),
       title,
@@ -40,20 +48,22 @@ const NewExpenseForm = () => {
           id: uuidv4(),
         })
       );
+      props.onClose();
     }
   }, [isLoading]);
 
   return (
     <div className="p-[20px] bg-white rounded-sm">
-      <form className="flex flex-col gap-[10px]">
-        <div className="flex gap-[10px] items-stretch">
+      <form className="flex flex-col gap-[10px] flex-wrap">
+        {formError && <p className="text-red-500">*{formError}</p>}
+        <div className="flex gap-[10px] items-stretch flex-wrap">
           <div>
             <label>Title:</label>
             <br></br>
             <input
               type="text"
               onChange={(e) => setTitle(e.target.value)}
-              className="border p-[10px] w-[187px] rounded-lg"
+              className="border p-[10px] w-[187px] rounded-lg "
             />
           </div>
           <div>
@@ -61,7 +71,7 @@ const NewExpenseForm = () => {
             <br></br>
             <select
               onChange={(e) => setCategory(e.target.value)}
-              className="border p-[10px] w-[187px] rounded-lg"
+              className="border p-[10px] w-[187px] rounded-lg h-[46px]"
             >
               <option value="Food">Food</option>
               <option value="Shelter">Shelter</option>
@@ -71,14 +81,15 @@ const NewExpenseForm = () => {
             </select>
           </div>
         </div>
-        <div className="flex gap-[10px] mb-[20px]">
+        <div className="flex gap-[10px] mb-[20px] flex-wrap">
           <div>
             <div>
-              <label>Amount:</label>
+              <label>Amount (in dollar):</label>
               <br></br>
               <input
                 type="number"
-                min={0}
+                min={1}
+                defaultValue={1}
                 onChange={(e) => setAmount(e.target.value)}
                 className="border p-[10px] w-[187px] rounded-lg"
               />
@@ -91,6 +102,7 @@ const NewExpenseForm = () => {
             <input
               type="date"
               max={getCurrentDate()}
+              defaultValue={getCurrentDate()}
               onChange={(e) => setDate(e.target.value)}
               className="border p-[10px] w-[187px] rounded-lg"
             />

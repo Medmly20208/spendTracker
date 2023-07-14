@@ -2,40 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-
-    @font-face {
-        font-family: "Kollektif";
-        src: url("./fonts/Kollektif/Kollektif.ttf") format("TrueType");
-    }
+@font-face {
+  font-family: "Kollektif";
+  src: url("./fonts/Kollektif/Kollektif.ttf") format("TrueType");
+}
 
 @layer components {
-    .mainBtn {
-        @apply bg-main-red border cursor-pointer transition-all duration-100 text-white border-main-red rounded-md px-[15px] py-[8px] hover:text-main-red hover:bg-white;
-    }
-    .primaryBtn {
-        @apply bg-white border cursor-pointer transition-all duration-100 text-main-red border-main-red rounded-md px-[15px] py-[8px] hover:text-white hover:bg-main-red;
-    }
-    .listItem{
-        @apply hover:text-main-red cursor-pointer font-thin
-    }
-}
-
-*{
-    font-family: "Kollektif", sans-serif;
-    scroll-behavior: smooth;
-}
-
-th,td{
-    border: 1px solid gray;
-    padding: 10px;
-}
-
-.successMessages{
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 10000;
+  .mainBtn {
+    @apply bg-main-red border cursor-pointer transition-all duration-100 text-white border-main-red rounded-md px-[15px] py-[8px] hover:text-main-red hover:bg-white;
   }
+  .primaryBtn {
+    @apply bg-white border cursor-pointer transition-all duration-100 text-main-red border-main-red rounded-md px-[15px] py-[8px] hover:text-white hover:bg-main-red;
+  }
+  .listItem {
+    @apply hover:text-main-red cursor-pointer font-thin;
+  }
+}
+
+* {
+  font-family: "Kollektif", sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+th,
+td {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.successMessages {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10000;
+}

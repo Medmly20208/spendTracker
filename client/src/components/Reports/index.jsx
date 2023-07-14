@@ -48,7 +48,7 @@ const Reports = () => {
 
         {isModalOpen && (
           <Modal onClose={closeModal}>
-            <NewExpenseForm />
+            <NewExpenseForm onClose={closeModal} />
           </Modal>
         )}
         <div className="w-full mt-[10px]">
