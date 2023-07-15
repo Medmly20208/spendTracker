@@ -9,7 +9,7 @@ import {
   DocumentChartBarIcon,
   NewspaperIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  PhoneIcon
+  PhoneIcon,
 } from "@heroicons/react/24/outline";
 
 //iconify
@@ -22,12 +22,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/LogoIcon.png";
 import NavItem from "./NavItem";
 
-
 const Nav = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selectedNav, setSelectedNav] = useState(location.pathname.slice(1).split("/")[1]);
+  const [selectedNav, setSelectedNav] = useState(
+    location.pathname.slice(1).split("/")[1]
+  );
   const navItemClass =
     "w-[40px] h-[40px] p-[5px]  text-white hover:bg-secondary-green cursor-pointer transition-all duration-300 rounded-md";
 
@@ -35,9 +36,8 @@ const Nav = (props) => {
     ? "material-symbols:keyboard-double-arrow-left"
     : "material-symbols:keyboard-double-arrow-right";
 
-
   const logOut = () => {
-    //localStorage.setItem("userData", null);
+    localStorage.setItem("userData", null);
     localStorage.setItem("token", null);
     navigate("/", { replace: true });
   };
@@ -68,11 +68,7 @@ const Nav = (props) => {
             }
           />
 
-          <div
-            
-            className="fixed top-[0px] left-[0px] h-screen w-[250px] bg-main-red z-[10000] "
-          >
-           
+          <div className="fixed top-[0px] left-[0px] h-screen w-[250px] bg-main-red z-[10000] ">
             <div className="flex flex-col items-center justify-start gap-[20px] h-full pt-[150px]">
               <NavItem
                 path="Dashboard"
@@ -104,8 +100,8 @@ const Nav = (props) => {
                 selectedNav={selectedNav}
                 icon={<ChatBubbleOvalLeftEllipsisIcon className="!w-[1.5em]" />}
               />
-          
-             <NavItem
+
+              <NavItem
                 path="News"
                 setSelectedNav={setSelectedNav}
                 selectedNav={selectedNav}
