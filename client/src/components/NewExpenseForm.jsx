@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const NewExpenseForm = (props) => {
   const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const [category, setCategory] = useState("Food");
   const [date, setDate] = useState(getCurrentDate());
   const [formError, setFormError] = useState(null);
@@ -64,6 +64,7 @@ const NewExpenseForm = (props) => {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               className="border p-[10px] w-[187px] rounded-lg "
+              maxLength={10}
             />
           </div>
           <div>
@@ -89,7 +90,7 @@ const NewExpenseForm = (props) => {
               <input
                 type="number"
                 min={1}
-                defaultValue={1}
+                value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="border p-[10px] w-[187px] rounded-lg"
               />

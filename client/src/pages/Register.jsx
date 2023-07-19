@@ -61,7 +61,6 @@ const Login = () => {
     navigate("/user/dashboard");
   }
 
-  console.log(error);
   return (
     <>
       <div className="flex flex-center max-h-screen overflow-hidden">

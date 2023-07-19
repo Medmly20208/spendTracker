@@ -19,7 +19,6 @@ import { getCurrentDate } from "../../utils";
 const Dashboard = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
 
-  console.log("user data", userData);
   return (
     <CardContainer>
       <SectionTitle title={"Dashboard"} className={"!text-left "} />

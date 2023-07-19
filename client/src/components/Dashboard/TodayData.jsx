@@ -1,52 +1,47 @@
-import React from 'react'
+import React from "react";
 
 //components
-import ValueCard from './ValueCard'
+import ValueCard from "./ValueCard";
 
 //hooks
-import {useGetExpensesQuery} from "../../api/apiSlice.js"
+import { useGetExpensesQuery } from "../../api/apiSlice.js";
 
 //utils
-import {getCurrentDate,addDays} from "../../utils"
-
+import { getCurrentDate } from "../../utils";
 
 const TodayData = () => {
-
-
-
-
- 
-     
-const {data:expenses} = useGetExpensesQuery({userId:localStorage.getItem("id"),startDate:addDays(getCurrentDate(),0),endDate:addDays(getCurrentDate(),0)}) 
-
+  const { data: expenses } = useGetExpensesQuery({
+    userId: localStorage.getItem("id"),
+    startDate: getCurrentDate(),
+    endDate: getCurrentDate(),
+    category: "All",
+  });
   const Amounts = {
-   "Food":0,
-   "Transportation":0,
-   "Other":0,
-   "Entertainment":0,
-   "Shelter":0,
-   "Total":0
+    Food: 0,
+    Transportation: 0,
+    Other: 0,
+    Entertainment: 0,
+    Shelter: 0,
+    Total: 0,
+  };
+  expenses?.data.map((item) => {
+    Amounts[`${item.category}`] += item.amount;
+    Amounts["Total"] += item.amount;
+  });
 
-  }
-  expenses?.data.map((item)=>{
-      Amounts[item.category]+=item.amount
-      Amounts["Total"]+=item.amount
-  })
   return (
     <div>
-        <h1 className='text-2xl font-bold mb-[10px]'>Today</h1>
-        <div className='flex gap-[10px] flex-wrap'>
-            <ValueCard title="Total" amount={Amounts["Total"]}/>
-            <ValueCard title="Food" amount={Amounts["Food"]}/>
-            <ValueCard title="Transportation" amount={Amounts["Transportation"]} />
-            <ValueCard title="Shelter" amount={Amounts["Shelter"]}/>
-            <ValueCard title="Entertainment" amount={Amounts["Entertainment"]} />
-            <ValueCard title="Other" amount={Amounts["Other"]} />
-
-           
-        </div>
+      <h1 className="text-2xl font-bold mb-[10px]">Today</h1>
+      <div className="flex gap-[10px] flex-wrap">
+        <ValueCard title="Total" amount={Amounts["Total"]} />
+        <ValueCard title="Food" amount={Amounts["Food"]} />
+        <ValueCard title="Transportation" amount={Amounts["Transportation"]} />
+        <ValueCard title="Shelter" amount={Amounts["Shelter"]} />
+        <ValueCard title="Entertainment" amount={Amounts["Entertainment"]} />
+        <ValueCard title="Other" amount={Amounts["Other"]} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TodayData
+export default TodayData;

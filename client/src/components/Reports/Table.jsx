@@ -1,8 +1,6 @@
 import React from "react";
 
 const Table = (props) => {
-  console.log(props.expenses);
-
   return (
     <div className="overflow-x-auto">
       <table>
