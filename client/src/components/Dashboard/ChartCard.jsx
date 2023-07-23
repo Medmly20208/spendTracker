@@ -11,10 +11,9 @@ import { getCurrentDate, addDays } from "../../utils/index";
 function generateDateArray(startDate, endDate) {
   let dates = [];
   let currentDate = startDate;
-  console.log(currentDate, endDate);
   while (currentDate != endDate) {
     dates.push(currentDate);
-    console.log(currentDate);
+
     currentDate = addDays(currentDate, 0);
   }
 
@@ -34,43 +33,52 @@ const ChartCard = () => {
     startDate,
   });
 
-  console.log(expenses);
+  const chartValues = {};
+
+  for (let date in Dates) {
+    chartValues[`${Dates[date]}`] = {
+      Food: 0,
+      Transportation: 0,
+      Other: 0,
+      Entertainement: 0,
+      Shelter: 0,
+      Total: 0,
+    };
+  }
+
+  if (expenses?.data) {
+    for (let expense of expenses.data) {
+      chartValues[expense.date.slice(0, 10)][expense.category] +=
+        expense.amount;
+      chartValues[expense.date.slice(0, 10)]["Total"] += expense.amount;
+    }
+  }
 
   const data = {
     series: [
       {
         name: "Total",
-        data: expenses?.data?.map((item) => item.amount),
+        data: Object.values(chartValues).map((item) => item.Total),
       },
       {
         name: "Other",
-        data: expenses?.data?.map((item) =>
-          item.category === "Other" ? item.amount : 0
-        ),
+        data: Object.values(chartValues).map((item) => item.Other),
       },
       {
         name: "Transportation",
-        data: expenses?.data?.map((item) =>
-          item.category === "Transportation" ? item.amount : 0
-        ),
+        data: Object.values(chartValues).map((item) => item.Transportation),
       },
       {
         name: "Food",
-        data: expenses?.data?.map((item) =>
-          item.category === "Food" ? item.amount : 0
-        ),
+        data: Object.values(chartValues).map((item) => item.Food),
       },
       {
         name: "Shelter",
-        data: expenses?.data?.map((item) =>
-          item.category === "Shelter" ? item.amount : 0
-        ),
+        data: Object.values(chartValues).map((item) => item.Shelter),
       },
       {
         name: "Entertainement",
-        data: expenses?.data?.map((item) =>
-          item.category === "Entertainement" ? item.amount : 0
-        ),
+        data: Object.values(chartValues).map((item) => item.Entertainement),
       },
     ],
     options: {
@@ -80,7 +88,7 @@ const ChartCard = () => {
       },
       colors: [
         "#6b7280",
-        "#6b7280",
+        "#ef4444",
         "#eab308",
         "#f97316",
         "#3b82f6",
@@ -90,7 +98,7 @@ const ChartCard = () => {
       markers: {
         colors: [
           "#6b7280",
-          "#6b7280",
+          "#ef4444",
           "#eab308",
           "#f97316",
           "#3b82f6",
@@ -103,7 +111,7 @@ const ChartCard = () => {
       fill: {
         colors: [
           "#6b7280",
-          "#6b7280",
+          "#ef4444",
           "#eab308",
           "#f97316",
           "#3b82f6",
@@ -117,7 +125,7 @@ const ChartCard = () => {
       },
       xaxis: {
         type: "date",
-        categories: Dates,
+        categories: Object.keys(chartValues),
       },
       tooltip: {
         x: {
@@ -142,7 +150,6 @@ const ChartCard = () => {
               id="from"
               className="px-[10px] py-[5px] border
              border-gray-500 rounded-3xl"
-              defaultValue={"2023-01-24"}
             />
           </div>
           <div>
@@ -156,7 +163,6 @@ const ChartCard = () => {
               id="to"
               className="px-[10px] py-[5px] border
              border-gray-500 rounded-3xl"
-              defaultValue={"2023-05-24"}
             />
           </div>
         </div>

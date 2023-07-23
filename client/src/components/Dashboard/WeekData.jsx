@@ -25,6 +25,7 @@ const WeekData = () => {
     Amounts[item.category] += item.amount;
     Amounts["Total"] += item.amount;
   });
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-[10px]">This week</h1>

@@ -14,7 +14,6 @@ const TodayData = () => {
     userId: localStorage.getItem("id"),
     startDate: getCurrentDate(),
     endDate: getCurrentDate(),
-    category: "All",
   });
   const Amounts = {
     Food: 0,
