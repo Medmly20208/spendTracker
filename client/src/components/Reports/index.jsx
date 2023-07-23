@@ -21,7 +21,7 @@ const Reports = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [startDate, setStartDate] = useState(getCurrentDate());
   const [endDate, setEndDate] = useState(getCurrentDate());
-  const [category, setCategory] = useState("Food");
+  const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
   const messages = useSelector((content) => content.messages.messages);
 

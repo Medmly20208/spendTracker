@@ -5,19 +5,20 @@ const default_image =
 
 const NewsCard = ({ title, image, snippet, link }) => {
   return (
-    <div className="w-[350px] p-[10px] flex flex-col gap-4">
+    <div className="w-[350px] p-[10px] flex flex-col gap-4 h-[380px] justify-between">
       <div>
         <img
           onError={(e) => (e.target.src = default_image)}
           src={image || default_image}
           alt={"news image"}
-          className="max-h-[138px]"
+          className="max-h-[138px] !w-[350px]"
         />
+        <div className="px-[10px] mt-[20px]">
+          <h3>{title}</h3>
+          <p className="text-gray-500">{snippet}</p>
+        </div>
       </div>
-      <div className="px-[10px]">
-        <h3>{title}</h3>
-        <p className="text-gray-500">{snippet}</p>
-      </div>
+
       <div className="px-[10px] ">
         <a className="mainBtn w-fit" href={link} target="_blank">
           see more details
