@@ -41,7 +41,6 @@ exports.getExpenses = catchAsync(async (req, res) => {
     delete queryObj.search;
   }
 
-  console.log(queryObj);
   const expense = await expenseModel.find(queryObj);
 
   res.status(200).json({

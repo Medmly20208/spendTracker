@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
           },
           {
             path: ":room",
-
+            index: true,
             element: <ChatItem />,
           },
         ],
