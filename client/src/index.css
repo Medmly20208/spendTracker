@@ -40,3 +40,13 @@ td {
   gap: 10px;
   z-index: 10000;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 12px;
+}

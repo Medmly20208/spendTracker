@@ -32,5 +32,5 @@ module.exports = (err, req, res, next) => {
   err.statusCode = !err.statusCode ? 500 : err.statusCode;
   err.status = !err.status ? "error" : err.status;
 
-  sendProdError(err, res);
+  sendDevError(err, res);
 };

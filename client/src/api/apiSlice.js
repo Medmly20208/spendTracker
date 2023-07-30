@@ -19,6 +19,19 @@ export const apiSlice = createApi({
         body: expense,
       }),
     }),
+    addMessage: builder.mutation({
+      query: (message) => ({
+        url: "/messages",
+        method: "POST",
+        body: message,
+      }),
+    }),
+    getMessagesByRoomId: builder.query({
+      query: (query) => ({
+        url: `/messages/${query.room}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -43,6 +56,11 @@ export const authSlice = createApi({
   }),
 });
 
-export const { useGetExpensesQuery, useAddExpenseMutation } = apiSlice;
+export const {
+  useGetExpensesQuery,
+  useAddExpenseMutation,
+  useAddMessageMutation,
+  useGetMessagesByRoomIdQuery,
+} = apiSlice;
 
 export const { useLoginMutation, useRegisterMutation } = authSlice;

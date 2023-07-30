@@ -14,11 +14,15 @@ import { useGetExpensesQuery } from "../../api/apiSlice";
 //redux
 import { useSelector } from "react-redux";
 
+//utils
+import { getCurrentDate } from "../../utils";
+
 const Reports = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [category, setCategory] = useState("");
+  const [startDate, setStartDate] = useState(getCurrentDate());
+  const [endDate, setEndDate] = useState(getCurrentDate());
+  const [category, setCategory] = useState("All");
+  const [search, setSearch] = useState("");
   const messages = useSelector((content) => content.messages.messages);
 
   const { data: expenses, refetch } = useGetExpensesQuery({
@@ -26,6 +30,7 @@ const Reports = () => {
     endDate,
     startDate,
     category,
+    search,
   });
 
   const openModal = () => setIsModalOpen(true);
@@ -33,9 +38,8 @@ const Reports = () => {
 
   useEffect(() => {
     refetch();
-  }, [startDate, endDate, category]);
+  }, [startDate, endDate, category, search]);
 
-  console.log(expenses);
   return (
     <>
       <CardContainer>
@@ -59,6 +63,8 @@ const Reports = () => {
                 className="px-[10px] py-[5px] border
              border-gray-500 rounded-md"
                 placeholder="expense title"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               ></input>
             </div>
             <div>
@@ -66,6 +72,7 @@ const Reports = () => {
                 className="px-[10px] py-[9px] border
              border-gray-500 rounded-md"
                 onChange={(e) => setCategory(e.target.value)}
+                value={category}
               >
                 <option value="Food">Food</option>
                 <option value="All">All</option>
@@ -85,25 +92,28 @@ const Reports = () => {
                   id="from"
                   className="px-[10px] py-[5px] border
              border-gray-500 rounded-3xl"
-                  defaultValue={"2023-06-01"}
+                  value={startDate}
                 />
               </div>
               <div>
                 to :{" "}
                 <input
                   onChange={(e) => setEndDate(e.target.value)}
+                  min={startDate}
                   type="date"
                   name="to"
                   id="to"
                   className="px-[10px] py-[5px] border
              border-gray-500 rounded-3xl"
-                  defaultValue={"2023-06-11"}
+                  value={endDate}
                 />
               </div>
             </div>
           </form>
         </div>
+
         <Table expenses={expenses?.data} />
+        {expenses?.data.length === 0 && <p>No results</p>}
       </CardContainer>
       <div className="successMessages">
         {messages.map((item, key) => {

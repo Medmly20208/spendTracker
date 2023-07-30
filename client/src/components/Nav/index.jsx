@@ -9,7 +9,6 @@ import {
   DocumentChartBarIcon,
   NewspaperIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  PhoneIcon,
 } from "@heroicons/react/24/outline";
 
 //iconify
