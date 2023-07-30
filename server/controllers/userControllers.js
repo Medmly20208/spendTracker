@@ -55,7 +55,8 @@ exports.SignUp = (req, res, next) => {
         token,
         data: {
           email: user.email,
-          type: user.type,
+          firstName: user.firstName,
+          lastName: user.lastName,
           id: user._id,
         },
       });
@@ -77,9 +78,9 @@ exports.LogIn = (req, res) => {
         status: "success",
         token,
         data: {
-          user: user,
           email: user.email,
-          type: user.type,
+          firstName: user.firstName,
+          lastName: user.lastName,
           id: user._id,
         },
       });

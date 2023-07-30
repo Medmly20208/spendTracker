@@ -17,11 +17,13 @@ import { Icon } from "@iconify/react";
 // react-router-dom
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-//components
+//assets
 import Logo from "../../assets/images/LogoIcon.png";
+
+//components
 import NavItem from "./NavItem";
 
-const Nav = (props) => {
+const Nav = ({ isNavDisplayed, ToggleNav }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -31,91 +33,79 @@ const Nav = (props) => {
   const navItemClass =
     "w-[40px] h-[40px] p-[5px]  text-white hover:bg-secondary-green cursor-pointer transition-all duration-300 rounded-md";
 
-  const navIcon = props.isNavDisplayed
+  const navIcon = isNavDisplayed
     ? "material-symbols:keyboard-double-arrow-left"
     : "material-symbols:keyboard-double-arrow-right";
 
-  const logOut = () => {
-    localStorage.setItem("userData", null);
-    localStorage.setItem("token", null);
-    navigate("/", { replace: true });
-  };
-
   return (
     <>
-      <Icon
-        onClick={props.ToggleNav}
-        icon={"fontisto:nav-icon-a"}
-        className={
-          navItemClass +
-          " bg-main-red fixed top-[10px] left-[5px] z-[100000] sm:hidden "
-        }
-      />
+      <div>
+        <div
+          onClick={ToggleNav}
+          className={`fixed ${
+            isNavDisplayed ? "block" : "hidden"
+          } top-0 left-0 w-screen h-screen bg-white/5 z-[10000] backdrop-blur-sm sm:hidden`}
+        ></div>
 
-      {props.isNavDisplayed && (
-        <div>
-          <div
-            onClick={props.ToggleNav}
-            className="fixed top-0 left-0 w-screen h-screen bg-white/5 z-[10000] backdrop-blur-sm sm:hidden"
-          ></div>
+        <div
+          className={`fixed top-[0px] ${
+            isNavDisplayed ? "left-0" : "left-[-250px]"
+          } box-content transition-all duration-300  h-screen w-[250px] bg-white text-black z-[10000] border-r-2  border-dotted`}
+        >
           <Icon
-            onClick={props.ToggleNav}
-            icon={navIcon}
-            className={
-              navItemClass +
-              " bg-primary-green fixed top-[80px] left-[20px] z-[1000]"
+            onClick={ToggleNav}
+            icon={
+              isNavDisplayed
+                ? "iconamoon:arrow-left-2-light"
+                : "iconamoon:arrow-right-2-light"
             }
+            className={`cursor-pointer absolute ${
+              isNavDisplayed ? "left-[240px]" : "left-[30px]"
+            }   !z-[10000000] top-[30px] translate-y-[-50%] box-content bg-white border border-main-red rounded-full text-main-red p-[0.1em] w-fit`}
           />
+          <img src={Logo} alt="logo" className="w-[3em] ml-[1.5em] mt-[1em]" />
+          <div className="flex flex-col items-center justify-start gap-[20px] h-full pt-[100px]">
+            <NavItem
+              path="Dashboard"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<PresentationChartLineIcon className="!w-[1.5em]" />}
+            />
+            <NavItem
+              path="Profile"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<UserCircleIcon className="!w-[1.5em]" />}
+            />
+            <NavItem
+              path="Notifications"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<BellIcon className="!w-[1.5em]" />}
+            />
+            <NavItem
+              path="Reports"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<DocumentChartBarIcon className="!w-[1.5em]" />}
+            />
+            <NavItem
+              path="Chat"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<ChatBubbleOvalLeftEllipsisIcon className="!w-[1.5em]" />}
+            />
 
-          <div className="fixed top-[0px] left-[0px] h-screen w-[250px] bg-main-red z-[10000] ">
-            <div className="flex flex-col items-center justify-start gap-[20px] h-full pt-[150px]">
-              <NavItem
-                path="Dashboard"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<PresentationChartLineIcon className="!w-[1.5em]" />}
-              />
-              <NavItem
-                path="Profile"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<UserCircleIcon className="!w-[1.5em]" />}
-              />
-              <NavItem
-                path="Notifications"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<BellIcon className="!w-[1.5em]" />}
-              />
-              <NavItem
-                path="Reports"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<DocumentChartBarIcon className="!w-[1.5em]" />}
-              />
-              <NavItem
-                path="Chat"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<ChatBubbleOvalLeftEllipsisIcon className="!w-[1.5em]" />}
-              />
-
-              <NavItem
-                path="News"
-                setSelectedNav={setSelectedNav}
-                selectedNav={selectedNav}
-                icon={<NewspaperIcon className="!w-[1.5em]" />}
-              />
-              <div>
-                <ArrowLeftOnRectangleIcon
-                  className={`${navItemClass} ${"bg-primary-red"}`}
-                  onClick={logOut}
-                />
-              </div>
-            </div>
+            <NavItem
+              path="News"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<NewspaperIcon className="!w-[1.5em]" />}
+            />
+            <div></div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
