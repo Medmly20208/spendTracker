@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const NavItem = (props) => {
   const navItemClass =
-    "h-[40px] p-[5px]  text-white hover:bg-secondary-green cursor-pointer transition-all duration-300 ";
+    "h-[40px] p-[5px] !w-[200px] rounded-md text-black hover:bg-secondary-green cursor-pointer transition-all duration-300 ";
   return (
     <Link
       to={`${props.path}`}
       className={`${navItemClass} ${
         props.selectedNav === props.path
-          ? " bg-red-600"
-          : " bg-main-red"
-      } py-[5px] w-full  flex items-center justify-start gap-[10px] h-fit `}
+          ? "text-main-red bg-gray-100"
+          : " bg-white"
+      } py-[5px] w-full flex items-center justify-start gap-[10px] h-fit `}
       onClick={() => props.setSelectedNav(props.path)}
     >
       {props.icon}

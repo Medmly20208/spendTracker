@@ -48,7 +48,7 @@ const Login = () => {
   if (isSuccess) {
     localStorage.setItem("token", data.token);
     localStorage.setItem("id", data.data.id);
-    localStorage.setItem("userData", JSON.stringify(data.data.user));
+    localStorage.setItem("userData", JSON.stringify(data.data));
 
     navigate("/user/Dashboard");
   }
