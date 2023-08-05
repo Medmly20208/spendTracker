@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   messages: [],
+  isDarkMode: localStorage.getItem("isDarkMode")
+    ? localStorage.getItem("isDarkMode")
+    : false,
 };
 
-export const messagesSlice = createSlice({
-  name: "messages",
+export const uiSlice = createSlice({
+  name: "ui",
   initialState,
   reducers: {
     addNewMessage: (state, { payload }) => {
@@ -14,10 +17,19 @@ export const messagesSlice = createSlice({
     removeMessage: (state, { payload }) => {
       state.messages = state.messages.filter((item) => payload.id != item.id);
     },
+    toggleMode: (state, { payload }) => {
+      if (payload?.type) {
+        state.isDarkMode = payload.type;
+        return;
+      }
+      state.isDarkMode = !state.isDarkMode;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addNewMessage, removeMessage } = messagesSlice.actions;
+export const { addNewMessage, removeMessage } = uiSlice.actions;
 
-export default messagesSlice.reducer;
+export const { toggleMode } = uiSlice.actions;
+
+export default uiSlice.reducer;

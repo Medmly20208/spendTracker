@@ -1,15 +1,17 @@
-import React from 'react'
+import React from "react";
 
 const CardContainer = (props) => {
   return (
-    <div className={"w-full flex justify-center items-center "+props.className}>
-      <div className="p-[20px] mt-[100px] mb-[20px] bg-white shadow-md w-[90%] rounded-lg">
+    <div
+      className={`w-full flex justify-center items-center ${props.className}  `}
+    >
+      <div className="p-[20px] mt-[100px] mb-[20px] bg-white shadow-md w-[90%] rounded-lg dark:bg-secondary-black dark:text-white">
         <div className="flex flex-col justify-center  h-full">
-            {props.children}
-            </div>
-            </div>
-            </div>
-  )
-}
+          {props.children}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default CardContainer
+export default CardContainer;

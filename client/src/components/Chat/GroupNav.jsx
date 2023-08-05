@@ -8,10 +8,9 @@ const GroupNav = ({ room, setRoom }) => {
 
   const listItemstyle = (roomList) => {
     return `p-[10px] border rounded-md cursor-pointer ${
-      roomList == param.room ? "bg-gray-100" : ""
+      roomList == param.room ? "bg-gray-100 dark:bg-main-black" : ""
     }`;
   };
-  console.log(param);
   return (
     <div>
       <ul className="flex flex-col gap-[5px] ">

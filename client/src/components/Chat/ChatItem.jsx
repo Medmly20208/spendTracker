@@ -53,21 +53,18 @@ const ChatItem = () => {
   useEffect(() => {
     socket.on("message received", (res) => {
       if (res.room == room) {
-        console.log("test");
         setNewMessages((prev) => [...prev, res]);
       }
     });
     messagesContainer.current.scrollTop =
       messagesContainer.current.scrollHeight;
-    console.log();
   });
 
-  console.log(messagesContainer.scrollTop);
   return (
     <div className="flex gap-[10px] h-[400px]  flex-col w-full max-w-[600px]  ">
       <div
         ref={messagesContainer}
-        className="w-full border rounded-md h-[300px] bg-gray-200 overflow-auto scroll-auto"
+        className="w-full border rounded-md h-[300px] bg-gray-200 overflow-auto scroll-auto dark:bg-secondary-black"
       >
         <MessagesList
           messages={
