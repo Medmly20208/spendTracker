@@ -22,7 +22,7 @@ const MessagesList = ({ messages }) => {
         if (message.senderId === localStorage.getItem("id")) {
           return (
             <div className="flex justify-end w-full" key={index}>
-              <div className="bg-blue-500 text-white w-fit p-[5px] rounded-md  m-[10px]">
+              <div className="bg-blue-500 text-white w-fit p-[5px] rounded-md  m-[10px] dark:bg-main-black">
                 <p className="!text-[12px] text-gray-100 !m-[0px]">You</p>
                 <p className="!m-[0px]">{message.message}</p>
                 <p className="!text-[12px]">
@@ -36,7 +36,7 @@ const MessagesList = ({ messages }) => {
         } else {
           return (
             <div className="flex justify-start w-full" key={index}>
-              <div className="bg-white  w-fit p-[5px] rounded-md  m-[10px]">
+              <div className="bg-white  w-fit p-[5px] rounded-md  m-[10px] dark:bg-secondary-black dark:border-2 dark:border-black">
                 <p className="!text-[12px]  !m-[0px]">{message.senderId}</p>
                 <p className="!m-[0px]">{message.message}</p>
                 <p className="!text-[12px]">

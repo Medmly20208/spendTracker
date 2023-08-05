@@ -50,7 +50,7 @@ const Nav = ({ isNavDisplayed, ToggleNav }) => {
         <div
           className={`fixed top-[0px] ${
             isNavDisplayed ? "left-0" : "left-[-250px]"
-          } box-content transition-all duration-300  h-screen w-[250px] bg-white text-black z-[10000] border-r-2  border-dotted`}
+          } box-content transition-all duration-300  h-screen w-[250px] bg-white text-black z-[10000] border-r-2  border-dotted dark:bg-main-black dark:text-white`}
         >
           <Icon
             onClick={ToggleNav}

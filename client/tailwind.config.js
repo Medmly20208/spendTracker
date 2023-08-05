@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -13,6 +14,8 @@ export default {
         toTop: "toTop 200ms linear ",
       },
       colors: {
+        "main-black": "#161C24",
+        "secondary-black": "#212B36",
         "main-red": "#F23D5E",
         "primary-red": "#F26B83",
         "secondary-red": "#F299A9",

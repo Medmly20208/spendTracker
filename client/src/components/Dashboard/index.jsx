@@ -22,8 +22,8 @@ const Dashboard = () => {
   return (
     <CardContainer>
       <SectionTitle title={"Dashboard"} className={"!text-left "} />
-      <div className="flex justify-between">
-        <h2 className="text-[25px] my-[10px] !font-[500] ">
+      <div className="flex justify-between ">
+        <h2 className="text-[25px] my-[10px] !font-[500] dark:text-white ">
           Welcome Back,
           <span className="text-main-red">
             {userData.firstName + " " + userData.lastName}!
@@ -32,8 +32,8 @@ const Dashboard = () => {
       </div>
 
       <div className="flex gap-[5px] items-center mb-[20px] text-[16px] text-gray-500">
-        <Icon icon={"solar:calendar-linear"} className="text-[25px]" />
-        <p>{getCurrentDate()}</p>
+        <Icon icon={"solar:calendar-linear"} className="text-[25px] " />
+        <p className="dark:text-white">{getCurrentDate()}</p>
       </div>
 
       <div className="flex flex-col gap-[25px]">

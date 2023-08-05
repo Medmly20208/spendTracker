@@ -23,7 +23,7 @@ const Reports = () => {
   const [endDate, setEndDate] = useState(getCurrentDate());
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const messages = useSelector((content) => content.messages.messages);
+  const messages = useSelector((content) => content.ui.messages);
 
   const { data: expenses, refetch } = useGetExpensesQuery({
     userId: localStorage.getItem("id"),
@@ -55,13 +55,13 @@ const Reports = () => {
             <NewExpenseForm onClose={closeModal} />
           </Modal>
         )}
-        <div className="w-full mt-[10px]">
-          <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-gray-100 my-[10px] rounded-lg">
+        <div className="w-full mt-[10px] ">
+          <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-gray-100 my-[10px] rounded-lg dark:bg-secondary-black dark:text-white">
             <div>
               <input
                 type="text"
                 className="px-[10px] py-[5px] border
-             border-gray-500 rounded-md"
+             border-gray-500 rounded-md dark:bg-secondary-black"
                 placeholder="expense title"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -70,7 +70,7 @@ const Reports = () => {
             <div>
               <select
                 className="px-[10px] py-[9px] border
-             border-gray-500 rounded-md"
+             border-gray-500 rounded-md dark:bg-secondary-black"
                 onChange={(e) => setCategory(e.target.value)}
                 value={category}
               >
@@ -91,7 +91,7 @@ const Reports = () => {
                   name="from"
                   id="from"
                   className="px-[10px] py-[5px] border
-             border-gray-500 rounded-3xl"
+             border-gray-500 rounded-3xl dark:bg-secondary-black"
                   value={startDate}
                 />
               </div>
@@ -104,7 +104,7 @@ const Reports = () => {
                   name="to"
                   id="to"
                   className="px-[10px] py-[5px] border
-             border-gray-500 rounded-3xl"
+             border-gray-500 rounded-3xl dark:bg-secondary-black"
                   value={endDate}
                 />
               </div>

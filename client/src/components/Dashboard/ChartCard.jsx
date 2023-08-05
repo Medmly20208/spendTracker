@@ -149,7 +149,7 @@ const ChartCard = () => {
               name="from"
               id="from"
               className="px-[10px] py-[5px] border
-             border-gray-500 rounded-3xl"
+             border-gray-500 rounded-3xl dark:bg-secondary-black"
             />
           </div>
           <div>
@@ -162,7 +162,7 @@ const ChartCard = () => {
               name="to"
               id="to"
               className="px-[10px] py-[5px] border
-             border-gray-500 rounded-3xl"
+             border-gray-500 rounded-3xl dark:bg-secondary-black"
             />
           </div>
         </div>

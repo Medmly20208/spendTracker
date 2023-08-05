@@ -10,8 +10,8 @@ const NavItem = (props) => {
       to={`${props.path}`}
       className={`${navItemClass} ${
         props.selectedNav === props.path
-          ? "text-main-red bg-gray-100"
-          : " bg-white"
+          ? "text-main-red bg-gray-100 dark:bg-main-red dark:bg-opacity-10"
+          : " bg-white dark:bg-main-black dark:text-white"
       } py-[5px] w-full flex items-center justify-start gap-[10px] h-fit `}
       onClick={() => props.setSelectedNav(props.path)}
     >
