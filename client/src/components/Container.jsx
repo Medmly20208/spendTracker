@@ -74,7 +74,11 @@ const Container = () => {
                 <div className="border-b">
                   <p className=" text-black mb-[5px] font-bold">
                     {JSON.parse(localStorage.getItem("userData")).firstName}{" "}
-                    {JSON.parse(localStorage.getItem("userData")).lastName}
+                    {JSON.parse(localStorage.getItem("userData")).lastName
+                      .length < 10
+                      ? JSON.parse(localStorage.getItem("userData")).lastName
+                      : JSON.parse(localStorage.getItem("userData"))
+                          .lastName[0] + "."}
                   </p>
 
                   <p className="text-gray-500 mb-[5px]">

@@ -39,6 +39,13 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
+    updateUserNameById: builder.mutation({
+      query: (query) => ({
+        url: `/users/${query.id}`,
+        body: query.user,
+        method: "PUT",
+      }),
+    }),
   }),
 });
 
@@ -69,6 +76,7 @@ export const {
   useAddMessageMutation,
   useGetMessagesByRoomIdQuery,
   useGetUserNameByIdQuery,
+  useUpdateUserNameByIdMutation,
 } = apiSlice;
 
 export const { useLoginMutation, useRegisterMutation } = authSlice;

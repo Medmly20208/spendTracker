@@ -10,5 +10,6 @@ Router.post(
 );
 Router.post("/login", userController.ValidateLogInData, userController.LogIn);
 Router.get("/:id", userController.getUserNameById);
+Router.put("/:id", userController.updateNameById);
 
 module.exports = Router;

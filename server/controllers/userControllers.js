@@ -96,11 +96,29 @@ exports.LogIn = (req, res) => {
 //create expenses
 exports.getUserNameById = catchAsync(async (req, res) => {
   const expense = await User.findById(req.params.id).select(
-    "firstName lastName"
+    "firstName lastName email"
   );
 
   res.status(200).json({
     status: "success",
     data: expense,
+  });
+});
+
+exports.updateNameById = catchAsync(async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+    },
+    { new: true }
+  ).select("firstName lastName email _id");
+
+  res.status(200).json({
+    status: "success",
+    data: user,
   });
 });
