@@ -106,16 +106,17 @@ exports.getUserNameById = catchAsync(async (req, res) => {
 });
 
 exports.updateNameById = catchAsync(async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
-  const user = await User.findByIdAndUpdate(
-    req.params.id,
-    {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-    },
-    { new: true }
-  ).select("firstName lastName email _id");
+  let data = {};
+  if (req.body.firstName.length > 0) {
+    data["firstName"] = req.body.firstName;
+  }
+  if (req.body.lastName.length > 0) {
+    data["lastName"] = req.body.lastName;
+  }
+
+  const user = await User.findByIdAndUpdate(req.params.id, data, {
+    new: true,
+  }).select("firstName lastName email _id");
 
   res.status(200).json({
     status: "success",

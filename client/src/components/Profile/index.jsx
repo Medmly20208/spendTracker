@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 //components
 import SectionTitle from "../SectionTitle";
@@ -9,16 +9,31 @@ import {
   useGetUserNameByIdQuery,
   useUpdateUserNameByIdMutation,
 } from "../../api/apiSlice";
+import { useDispatch } from "react-redux";
+
+//ui slice
+import { addNewMessage } from "../../store/slices/uislice";
+
+//uuid4
+import { v4 as uuidv4 } from "uuid";
 
 const Profile = () => {
   const firstName = useRef(null);
   const lastName = useRef(null);
+  const dispatch = useDispatch();
   const { data } = useGetUserNameByIdQuery({ id: localStorage.getItem("id") });
+  const [formError, setError] = useState(null);
 
   const [updateUser, { data: newData, isSuccess, isError, error, isLoading }] =
     useUpdateUserNameByIdMutation();
 
   const updateUserHandler = () => {
+    setError(null);
+    if (firstName.current.value == "" || lastName.current.value == "") {
+      setError("required fields are empty");
+      return;
+    }
+
     updateUser({
       id: localStorage.getItem("id"),
       user: {
@@ -30,14 +45,21 @@ const Profile = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      localStorage.setItem("userData", data?.data);
+      localStorage.setItem("userData", JSON.stringify(newData?.data));
+      dispatch(
+        addNewMessage({
+          message: "profile updated successfully",
+          id: uuidv4(),
+        })
+      );
     }
-  }, [data]);
-
+  }, [isLoading]);
+  console.log(error);
   return (
     <CardContainer>
       <SectionTitle title={"Profile"} className={"!text-left "} />
       <div className="mt-[30px]">
+        {formError && <p className="text-red-600">*{formError}</p>}
         <div className=" w-fit mb-[10px] ">
           <label className="font-semibold mb-[10px]">First Name:</label>
           <br></br>

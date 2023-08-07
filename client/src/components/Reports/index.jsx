@@ -6,13 +6,9 @@ import CardContainer from "../CardContainer";
 import Modal from "../Modal";
 import NewExpenseForm from "../NewExpenseForm";
 import Table from "./Table";
-import SuccessMessage from "../SuccessMessage";
 
 //rtk
 import { useGetExpensesQuery } from "../../api/apiSlice";
-
-//redux
-import { useSelector } from "react-redux";
 
 //utils
 import { getCurrentDate } from "../../utils";
@@ -23,7 +19,6 @@ const Reports = () => {
   const [endDate, setEndDate] = useState(getCurrentDate());
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const messages = useSelector((content) => content.ui.messages);
 
   const { data: expenses, refetch } = useGetExpensesQuery({
     userId: localStorage.getItem("id"),
@@ -115,13 +110,6 @@ const Reports = () => {
         <Table expenses={expenses?.data} />
         {expenses?.data.length === 0 && <p>No results</p>}
       </CardContainer>
-      <div className="successMessages">
-        {messages.map((item, key) => {
-          return (
-            <SuccessMessage key={item.id} id={item.id} message={item.message} />
-          );
-        })}
-      </div>
     </>
   );
 };

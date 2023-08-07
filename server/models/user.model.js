@@ -10,13 +10,17 @@ const user = mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    firstName:{
-      type:String,
-      required:true,
+    firstName: {
+      type: String,
+      minLength: [1, "field is empty"],
+      maxLength: [10, "field is too long"],
+      required: true,
     },
-    lastName:{
-      type:String,
-      required:true,
+    lastName: {
+      type: String,
+      minLength: [1, "field is empty"],
+      maxLength: [10, "field is too long"],
+      required: true,
     },
     password: {
       type: String,
@@ -25,7 +29,6 @@ const user = mongoose.Schema(
       required: true,
     },
 
-   
     passwordResetToken: String,
     passwordResetTokenExpires: Date,
     changedPassword: Date,
@@ -47,7 +50,7 @@ user.statics.login = async function (email, password) {
   return user;
 };
 
-user.statics.signup = async function (email, password,firstName,lastName ) {
+user.statics.signup = async function (email, password, firstName, lastName) {
   const user = await this.findOne({ email });
 
   if (user) {
@@ -57,7 +60,12 @@ user.statics.signup = async function (email, password,firstName,lastName ) {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  const newUser = await this.create({ email, password: hashedPassword,  firstName, lastName});
+  const newUser = await this.create({
+    email,
+    password: hashedPassword,
+    firstName,
+    lastName,
+  });
 
   return newUser;
 };
