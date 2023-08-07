@@ -43,6 +43,8 @@ const ChatItem = () => {
       room: room,
       message: message.current.value,
     });
+
+    message.current.value = "";
   };
   let socket = io(ENDPOINT);
 
@@ -82,7 +84,7 @@ const ChatItem = () => {
           ref={message}
           type="text"
           placeholder="Type your message"
-          className="w-[90%] p-[5px] border border-main-red outline-none rounded-md"
+          className="w-[90%] p-[5px] border border-main-red outline-none rounded-md dark:bg-main-black dark:text-white"
         ></input>
         <a
           className="group mainBtn p-[5px] w-[40px] flex items-start justify-center "

@@ -9,5 +9,6 @@ Router.post(
   userController.SignUp
 );
 Router.post("/login", userController.ValidateLogInData, userController.LogIn);
+Router.get("/:id", userController.getUserNameById);
 
 module.exports = Router;

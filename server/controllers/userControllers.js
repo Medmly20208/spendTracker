@@ -92,3 +92,15 @@ exports.LogIn = (req, res) => {
       });
     });
 };
+
+//create expenses
+exports.getUserNameById = catchAsync(async (req, res) => {
+  const expense = await User.findById(req.params.id).select(
+    "firstName lastName"
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: expense,
+  });
+});

@@ -32,6 +32,13 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
+
+    getUserNameById: builder.query({
+      query: (query) => ({
+        url: `/users/${query.id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -61,6 +68,7 @@ export const {
   useAddExpenseMutation,
   useAddMessageMutation,
   useGetMessagesByRoomIdQuery,
+  useGetUserNameByIdQuery,
 } = apiSlice;
 
 export const { useLoginMutation, useRegisterMutation } = authSlice;

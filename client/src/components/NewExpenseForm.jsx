@@ -53,7 +53,7 @@ const NewExpenseForm = (props) => {
   }, [isLoading]);
 
   return (
-    <div className="p-[20px] bg-white rounded-sm">
+    <div className="p-[20px] bg-white rounded-sm dark:bg-main-black ">
       <form className="flex flex-col gap-[10px] flex-wrap">
         {formError && <p className="text-red-500">*{formError}</p>}
         <div className="flex gap-[10px] items-stretch flex-wrap">
@@ -63,7 +63,7 @@ const NewExpenseForm = (props) => {
             <input
               type="text"
               onChange={(e) => setTitle(e.target.value)}
-              className="border p-[10px] w-[187px] rounded-lg "
+              className="border p-[10px] w-[187px] rounded-lg dark:bg-main-black"
               maxLength={10}
             />
           </div>
@@ -72,7 +72,7 @@ const NewExpenseForm = (props) => {
             <br></br>
             <select
               onChange={(e) => setCategory(e.target.value)}
-              className="border p-[10px] w-[187px] rounded-lg h-[46px]"
+              className="border p-[10px] w-[187px] rounded-lg h-[46px] dark:bg-main-black"
             >
               <option value="Food">Food</option>
               <option value="Shelter">Shelter</option>
@@ -92,7 +92,7 @@ const NewExpenseForm = (props) => {
                 min={1}
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="border p-[10px] w-[187px] rounded-lg"
+                className="border p-[10px] w-[187px] rounded-lg dark:bg-main-black"
               />
             </div>
           </div>
@@ -105,7 +105,7 @@ const NewExpenseForm = (props) => {
               max={getCurrentDate()}
               defaultValue={getCurrentDate()}
               onChange={(e) => setDate(e.target.value)}
-              className="border p-[10px] w-[187px] rounded-lg"
+              className="border p-[10px] w-[187px] rounded-lg dark:bg-main-black"
             />
           </div>
         </div>

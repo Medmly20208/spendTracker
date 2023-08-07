@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   messages: [],
+  //isDarkMode: false,
   isDarkMode: localStorage.getItem("isDarkMode")
     ? localStorage.getItem("isDarkMode")
     : false,

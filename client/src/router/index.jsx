@@ -64,11 +64,6 @@ export const router = createBrowserRouter([
         element: <Chat />,
         children: [
           {
-            path: "",
-
-            element: <></>,
-          },
-          {
             path: ":room",
             index: true,
             element: <ChatItem />,
