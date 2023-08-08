@@ -7,14 +7,15 @@ import ValueCard from "./ValueCard";
 import { useGetExpensesQuery } from "../../api/apiSlice.js";
 
 //utils
-import { getCurrentDate } from "../../utils";
+import { addDays } from "../../utils";
 
 const TodayData = () => {
   const { data: expenses } = useGetExpensesQuery({
     userId: localStorage.getItem("id"),
-    startDate: getCurrentDate(),
-    endDate: getCurrentDate(),
+    startDate: addDays(new Date(), -1),
+    endDate: addDays(new Date(), 0),
   });
+
   const Amounts = {
     Food: 0,
     Transportation: 0,

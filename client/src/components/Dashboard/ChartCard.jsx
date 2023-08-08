@@ -8,6 +8,9 @@ import { useGetExpensesQuery } from "../../api/apiSlice";
 //utils
 import { getCurrentDate, addDays } from "../../utils/index";
 
+//redux
+import { useSelector } from "react-redux";
+
 function generateDateArray(startDate, endDate) {
   let dates = [];
   let currentDate = startDate;
@@ -21,8 +24,10 @@ function generateDateArray(startDate, endDate) {
 }
 
 const ChartCard = () => {
-  const [startDate, setStartDate] = useState(getCurrentDate());
-  const [endDate, setEndDate] = useState(getCurrentDate());
+  const [startDate, setStartDate] = useState(addDays(new Date(), -10));
+  const [endDate, setEndDate] = useState(addDays(new Date(), 0));
+  const isDarkMode = useSelector((content) => content.ui.isDarkMode);
+
   let Dates = [];
 
   Dates = generateDateArray(startDate, endDate);
@@ -128,9 +133,13 @@ const ChartCard = () => {
         categories: Object.keys(chartValues),
       },
       tooltip: {
+        style: {
+          backgroundColor: isDarkMode ? "black" : "white",
+        },
         x: {
           format: "dd/MM/yy HH:mm",
         },
+        theme: isDarkMode ? "dark" : "light",
       },
     },
   };
