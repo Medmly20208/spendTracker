@@ -11,16 +11,20 @@ import Table from "./Table";
 import { useGetExpensesQuery } from "../../api/apiSlice";
 
 //utils
-import { getCurrentDate } from "../../utils";
+import { addDays } from "../../utils";
 
 const Reports = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [startDate, setStartDate] = useState(getCurrentDate());
-  const [endDate, setEndDate] = useState(getCurrentDate());
+  const [startDate, setStartDate] = useState(addDays(new Date(), -10));
+  const [endDate, setEndDate] = useState(addDays(new Date(), 0));
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
 
-  const { data: expenses, refetch } = useGetExpensesQuery({
+  const {
+    data: expenses,
+    refetch,
+    isLoading,
+  } = useGetExpensesQuery({
     userId: localStorage.getItem("id"),
     endDate,
     startDate,
@@ -30,10 +34,6 @@ const Reports = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  useEffect(() => {
-    refetch();
-  }, [startDate, endDate, category, search]);
 
   return (
     <>
@@ -108,6 +108,7 @@ const Reports = () => {
         </div>
 
         <Table expenses={expenses?.data} />
+        {isLoading && <p>is Loading</p>}
         {expenses?.data.length === 0 && <p>No results</p>}
       </CardContainer>
     </>

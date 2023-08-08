@@ -25,12 +25,6 @@
   box-sizing: border-box;
 }
 
-th,
-td {
-  border: 1px solid gray;
-  padding: 10px;
-}
-
 .successMessages {
   position: fixed;
   bottom: 20px;

@@ -11,6 +11,29 @@ exports.CreateExpense = catchAsync(async (req, res) => {
   });
 });
 
+//delete expense by id
+exports.DeleteExpenseById = catchAsync(async (req, res) => {
+  const expense = await expenseModel.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    status: "success",
+    message: "deleted successfully",
+  });
+});
+
+exports.UpdateExpenseById = catchAsync(async (req, res) => {
+  const expense = await expenseModel.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "success",
+    message: expense,
+  });
+});
+
 //getExpensesBy req.body
 exports.getExpenses = catchAsync(async (req, res) => {
   let queryObj;

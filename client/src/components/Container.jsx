@@ -28,8 +28,6 @@ const Container = () => {
 
   const ToggleNav = () => setIsNavDisplayed((prev) => !prev);
 
-  //style={{marginLeft:isNavDisplayed && window.innerWidth>400 ? "80px" : "0px"}}
-
   const profileImgContent =
     JSON.parse(localStorage.getItem("userData")).firstName[0] +
     JSON.parse(localStorage.getItem("userData")).lastName[0];
@@ -76,9 +74,9 @@ const Container = () => {
 
             {isTooltipDisplayed && (
               <Tooltip onClose={closeTooltip}>
-                <div className="bg-white rounded-md p-[1em] border border-gray-300">
+                <div className="bg-white rounded-md p-[1em] border border-gray-300 dark:bg-main-black dark:text-white">
                   <div className="border-b">
-                    <p className=" text-black mb-[5px] font-bold">
+                    <p className=" text-black dark:text-white mb-[5px] font-bold">
                       {JSON.parse(localStorage.getItem("userData")).firstName}{" "}
                       {JSON.parse(localStorage.getItem("userData")).lastName
                         .length < 10
@@ -87,7 +85,7 @@ const Container = () => {
                             .lastName[0] + "."}
                     </p>
 
-                    <p className="text-gray-500 mb-[5px]">
+                    <p className="text-gray-500 mb-[5px] dark:text-white">
                       {JSON.parse(localStorage.getItem("userData")).email}
                     </p>
                   </div>
