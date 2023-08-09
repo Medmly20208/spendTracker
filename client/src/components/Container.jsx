@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //react-router-dom
 import { Outlet, useNavigate } from "react-router-dom";
@@ -20,6 +20,7 @@ const Container = () => {
 
   const [isNavDisplayed, setIsNavDisplayed] = useState(true);
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
+
   const isDarkMode = useSelector((content) => content.ui.isDarkMode);
   const messages = useSelector((content) => content.ui.messages);
 

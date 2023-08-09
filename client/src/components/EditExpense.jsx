@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useEditExpenseMutation } from "../api/apiSlice";
 
 //utils
-import { getCurrentDate } from "../utils";
+import { getCurrentDate, addDays } from "../utils";
 
 //REDUX
 import { addNewMessage } from "../store/slices/uislice";
@@ -16,7 +16,7 @@ const EditExpense = ({ onClose, id }) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(1);
   const [category, setCategory] = useState("Food");
-  const [date, setDate] = useState(getCurrentDate());
+  const [date, setDate] = useState(addDays(new Date(), -1));
   const [formError, setFormError] = useState(null);
   const dispatch = useDispatch();
 
@@ -66,7 +66,7 @@ const EditExpense = ({ onClose, id }) => {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               className="border p-[10px] w-[187px] rounded-lg dark:bg-main-black"
-              maxLength={10}
+              maxLength={20}
             />
           </div>
           <div>
@@ -104,8 +104,8 @@ const EditExpense = ({ onClose, id }) => {
             <br></br>
             <input
               type="date"
-              max={getCurrentDate()}
-              defaultValue={getCurrentDate()}
+              max={date}
+              value={date}
               onChange={(e) => setDate(e.target.value)}
               className="border p-[10px] w-[187px] rounded-lg dark:bg-main-black"
             />

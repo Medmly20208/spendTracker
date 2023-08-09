@@ -54,7 +54,6 @@ const Profile = () => {
       );
     }
   }, [isLoading]);
-  console.log(error);
   return (
     <CardContainer>
       <SectionTitle title={"Profile"} className={"!text-left "} />

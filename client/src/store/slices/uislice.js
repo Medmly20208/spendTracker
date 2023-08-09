@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   messages: [],
-  isDarkMode: false,
-  /*isDarkMode: localStorage.getItem("isDarkMode")
-    ? localStorage.getItem("isDarkMode")
-    : false,*/
+
+  isDarkMode:
+    localStorage.getItem("isDarkMode") != undefined
+      ? JSON.parse(localStorage.getItem("isDarkMode"))
+      : false,
 };
 
 export const uiSlice = createSlice({
@@ -24,6 +25,7 @@ export const uiSlice = createSlice({
         return;
       }
       state.isDarkMode = !state.isDarkMode;
+      localStorage.setItem("isDarkMode", state.isDarkMode);
     },
   },
 });

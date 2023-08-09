@@ -58,7 +58,8 @@ const Login = () => {
   if (isSuccess) {
     localStorage.setItem("token", data.token);
     localStorage.setItem("id", data.data.id);
-    navigate("/user/dashboard");
+    localStorage.setItem("userData", JSON.stringify(data.data));
+    navigate("/Dashboard");
   }
 
   return (
@@ -190,7 +191,7 @@ const Login = () => {
                 </div>
               </div>
               <a
-                onClick={signup}
+                onClick={isLoading ? () => {} : signup}
                 className="mainBtn w-full block text-center mt-[10px] cursor-pointer"
               >
                 {isLoading ? "loading" : "Register"}

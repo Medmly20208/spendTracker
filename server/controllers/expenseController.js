@@ -55,7 +55,7 @@ exports.getExpenses = catchAsync(async (req, res) => {
 
   if (queryObj.category === "All") {
     queryObj.category = {
-      $in: ["Food", "Other", "Transportation", "Entertainment"],
+      $in: ["Food", "Other", "Transportation", "Entertainment", "Shelter"],
     };
   }
 

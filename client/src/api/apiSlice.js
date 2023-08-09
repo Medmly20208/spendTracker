@@ -20,6 +20,7 @@ export const apiSlice = createApi({
         method: "POST",
         body: expense,
       }),
+      invalidatesTags: ["expense"],
     }),
     editExpense: builder.mutation({
       query: (expense) => ({
