@@ -31,16 +31,9 @@ export const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+
   {
-    path: "/forgot-password",
-    element: <div>ForgotPassword</div>,
-  },
-  {
-    path: "/reset-password",
-    element: <div>ResetPassword</div>,
-  },
-  {
-    path: "/user",
+    path: "/",
     element: <Container />,
     children: [
       {
@@ -51,10 +44,7 @@ export const router = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
-      {
-        path: "notifications",
-        element: <Notifications />,
-      },
+
       {
         path: "reports",
         element: <Reports />,

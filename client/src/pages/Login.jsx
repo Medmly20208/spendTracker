@@ -50,7 +50,7 @@ const Login = () => {
     localStorage.setItem("id", data.data.id);
     localStorage.setItem("userData", JSON.stringify(data.data));
 
-    navigate("/user/Dashboard");
+    navigate("/Dashboard");
   }
 
   return (
@@ -146,7 +146,7 @@ const Login = () => {
               </div>
 
               <a
-                onClick={loginHandler}
+                onClick={isLoading ? () => {} : loginHandler}
                 className="mainBtn w-full block text-center mt-[10px] cursor-pointer"
               >
                 {isLoading ? "loading..." : "Connect"}

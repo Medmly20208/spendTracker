@@ -28,7 +28,7 @@ const Nav = ({ isNavDisplayed, ToggleNav }) => {
   const navigate = useNavigate();
 
   const [selectedNav, setSelectedNav] = useState(
-    location.pathname.slice(1).split("/")[1]
+    location.pathname.slice(1).split("/")[0]
   );
   const navItemClass =
     "w-[40px] h-[40px] p-[5px]  text-white hover:bg-secondary-green cursor-pointer transition-all duration-300 rounded-md";
@@ -77,12 +77,7 @@ const Nav = ({ isNavDisplayed, ToggleNav }) => {
               selectedNav={selectedNav}
               icon={<UserCircleIcon className="!w-[1.5em]" />}
             />
-            <NavItem
-              path="Notifications"
-              setSelectedNav={setSelectedNav}
-              selectedNav={selectedNav}
-              icon={<BellIcon className="!w-[1.5em]" />}
-            />
+
             <NavItem
               path="Reports"
               setSelectedNav={setSelectedNav}

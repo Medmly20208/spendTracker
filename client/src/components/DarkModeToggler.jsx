@@ -14,7 +14,6 @@ const DarkModeToggler = () => {
 
   const toggleModeHandler = () => {
     dispatch(toggleMode());
-    localStorage.setItem("isDarkMode", isDarkMode);
   };
 
   return (
