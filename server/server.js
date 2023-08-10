@@ -19,7 +19,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin: [
       "http://localhost:5173",
-      "https://spend-tracker-2gpi-bljwkuiui-medmly20208.vercel.app/",
+      "https://spend-tracker-2gpi-bljwkuiui-medmly20208.vercel.app",
     ],
   },
 });
