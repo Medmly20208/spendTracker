@@ -38,6 +38,12 @@ exports.UpdateExpenseById = catchAsync(async (req, res) => {
 exports.getExpenses = catchAsync(async (req, res) => {
   let queryObj;
 
+  if (!req.query.userId) {
+    res.status(400).json({
+      status: "bad request",
+    });
+  }
+
   if (!req.query["startDate"] && !req.query["endDate"]) {
     queryObj = { ...req.query };
   } else {
