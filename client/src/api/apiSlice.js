@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_LINK }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://expensetracker-251s.onrender.com/api/v1/",
+  }),
   tagTypes: ["expense"],
   endpoints: (builder) => ({
     getExpenses: builder.query({
