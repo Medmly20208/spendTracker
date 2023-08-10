@@ -2,9 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://expensetracker-251s.onrender.com/api/v1/",
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_LINK }),
   tagTypes: ["expense"],
   endpoints: (builder) => ({
     getExpenses: builder.query({
@@ -72,7 +70,7 @@ export const apiSlice = createApi({
 
 export const authSlice = createApi({
   reducerPath: "auth",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1/users" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_LINK }),
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (body) => ({
