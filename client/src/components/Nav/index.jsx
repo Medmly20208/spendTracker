@@ -18,7 +18,7 @@ import { Icon } from "@iconify/react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 //assets
-import Logo from "../../assets/images/LogoIcon.png";
+import Logo from "../../assets/images/logoIcon.png";
 
 //components
 import NavItem from "./NavItem";
