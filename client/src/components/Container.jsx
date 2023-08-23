@@ -52,7 +52,7 @@ const Container = () => {
           } bg-gray-100 dark:bg-main-black`}
         >
           <div
-            className={`bg-white  w-full h-[60px] sticky top-0 border-b-2 flex  ${
+            className={`bg-white z-[10] w-full h-[60px] sticky top-0 border-b-2 flex  ${
               isNavDisplayed ? "justify-end" : "justify-between"
             } items-center gap-6 px-[1em] md:px-[3.3em] dark:bg-main-black `}
           >
@@ -63,7 +63,7 @@ const Container = () => {
                 isNavDisplayed ? "hidden" : "block"
               }   box-content text-3xl  text-main-red p-[0.1em] w-fit`}
             />
-            <div className="flex gap-4 items-center ">
+            <div className="flex gap-4 items-center  ">
               <DarkModeToggler />
               <div
                 onClick={openTooltip}

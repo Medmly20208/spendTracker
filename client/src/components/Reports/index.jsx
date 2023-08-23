@@ -77,7 +77,7 @@ const Reports = () => {
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div className="flex gap-[20px] ">
+            <div className="flex gap-[20px] flex-wrap">
               <div>
                 from :{" "}
                 <input

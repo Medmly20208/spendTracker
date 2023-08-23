@@ -88,7 +88,7 @@ const ChartCard = () => {
     ],
     options: {
       chart: {
-        height: 350,
+        height: 600,
         type: "area",
       },
       colors: [
@@ -148,7 +148,7 @@ const ChartCard = () => {
     <div className="mt-[50px]">
       <div className="flex justify-between items-center flex-wrap">
         <h1 className="text-2xl font-bold mb-[10px]">Chart</h1>
-        <div className="flex gap-[20px] ">
+        <div className="flex gap-[20px] flex-wrap">
           <div>
             from :{" "}
             <input
@@ -176,8 +176,13 @@ const ChartCard = () => {
           </div>
         </div>
       </div>
-
-      <Chart options={data.options} series={data.series} />
+      <div className="min-h-[400px]">
+        <Chart
+          options={data.options}
+          series={data.series}
+          className="min-h-[400px]"
+        />
+      </div>
     </div>
   );
 };

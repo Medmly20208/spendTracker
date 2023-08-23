@@ -14,6 +14,13 @@ export const apiSlice = createApi({
       }),
       providesTags: ["expense"],
     }),
+    getLatestExpenses: builder.query({
+      query: (query) => ({
+        url: `/expenses/latest/${query.id}`,
+        method: "GET",
+      }),
+      providesTags: ["expense"],
+    }),
     addExpense: builder.mutation({
       query: (expense) => ({
         url: "/expenses",
@@ -98,6 +105,7 @@ export const {
   useUpdateUserNameByIdMutation,
   useDeleteExpenseByIdMutation,
   useEditExpenseMutation,
+  useGetLatestExpensesQuery,
 } = apiSlice;
 
 export const { useLoginMutation, useRegisterMutation } = authSlice;

@@ -77,3 +77,16 @@ exports.getExpenses = catchAsync(async (req, res) => {
     data: expense,
   });
 });
+
+//get 4 latest expenses
+exports.getLatestExpenses = catchAsync(async (req, res) => {
+  const expense = await expenseModel
+    .find({ userId: req.params.id })
+    .sort({ createdAt: -1 })
+    .limit(4);
+
+  res.status(200).json({
+    status: "success",
+    data: expense,
+  });
+});

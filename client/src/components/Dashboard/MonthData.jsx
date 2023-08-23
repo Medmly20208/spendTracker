@@ -9,7 +9,12 @@ import { useGetExpensesQuery } from "../../api/apiSlice";
 //utils
 import { getCurrentDate, addDays } from "../../utils";
 
+//actions
+import { setMonthData } from "../../store/slices/uislice";
+import { useDispatch } from "react-redux";
+
 const MonthData = () => {
+  const dispatch = useDispatch();
   const { data: expenses } = useGetExpensesQuery({
     userId: localStorage.getItem("id"),
     endDate: addDays(getCurrentDate(), 0),
@@ -29,10 +34,14 @@ const MonthData = () => {
     Amounts["Total"] += item.amount;
   });
 
+  if (expenses) {
+    dispatch(setMonthData({ data: expenses.data }));
+  }
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-[10px]">This Month</h1>
-      <div className="flex gap-[10px] flex-wrap">
+      <div className="flex gap-[10px] flex-wrap justify-center ">
         <ValueCard title="Total" amount={Amounts["Total"]} />
         <ValueCard title="Food" amount={Amounts["Food"]} />
         <ValueCard title="Transportation" amount={Amounts["Transportation"]} />

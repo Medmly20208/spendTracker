@@ -11,4 +11,6 @@ Router.put("/:id", expenseController.UpdateExpenseById);
 
 Router.delete("/:id", expenseController.DeleteExpenseById);
 
+Router.get("/latest/:id", expenseController.getLatestExpenses);
+
 module.exports = Router;

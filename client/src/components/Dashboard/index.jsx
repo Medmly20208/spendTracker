@@ -10,9 +10,8 @@ import TodayData from "./TodayData";
 import MonthData from "./MonthData";
 import WeekData from "./WeekData";
 import ChartCard from "./ChartCard";
-
-import { useGetExpensesQuery } from "../../api/apiSlice";
-
+import LastestExpenses from "./LastestExpenses";
+import PieChart from "./PieChart";
 //utils
 import { getCurrentDate } from "../../utils";
 
@@ -35,13 +34,18 @@ const Dashboard = () => {
         <Icon icon={"solar:calendar-linear"} className="text-[25px] " />
         <p className="dark:text-white">{getCurrentDate()}</p>
       </div>
-
-      <div className="flex flex-col gap-[25px]">
-        <TodayData />
-        <WeekData />
-        <MonthData />
-        <ChartCard />
+      <div className="grid grid-rows-1 xl:grid-cols-[minmax(700px,_1fr)_400px] gap-[0px]">
+        <div className="flex flex-col gap-[25px] ">
+          <TodayData />
+          <WeekData />
+          <MonthData />
+        </div>
+        <div>
+          <LastestExpenses />
+          <PieChart />
+        </div>
       </div>
+      <ChartCard />
     </CardContainer>
   );
 };

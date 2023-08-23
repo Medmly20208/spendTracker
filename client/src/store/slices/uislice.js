@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   messages: [],
-
+  monthData: [],
   isDarkMode:
     localStorage.getItem("isDarkMode") != undefined
       ? JSON.parse(localStorage.getItem("isDarkMode"))
@@ -13,6 +13,9 @@ export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
+    setMonthData: (state, { payload }) => {
+      state.monthData = payload.data;
+    },
     addNewMessage: (state, { payload }) => {
       state.messages.push({ id: payload.id, message: payload.message });
     },
@@ -31,7 +34,7 @@ export const uiSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addNewMessage, removeMessage } = uiSlice.actions;
+export const { addNewMessage, removeMessage, setMonthData } = uiSlice.actions;
 
 export const { toggleMode } = uiSlice.actions;
 

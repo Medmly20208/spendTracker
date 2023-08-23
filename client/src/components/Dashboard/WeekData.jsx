@@ -29,7 +29,7 @@ const WeekData = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-[10px]">This week</h1>
-      <div className="flex gap-[10px] flex-wrap">
+      <div className="flex gap-[10px] flex-wrap justify-center ">
         <ValueCard title="Total" amount={Amounts["Total"]} />
         <ValueCard title="Food" amount={Amounts["Food"]} />
         <ValueCard title="Transportation" amount={Amounts["Transportation"]} />
