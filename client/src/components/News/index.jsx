@@ -39,7 +39,7 @@ const News = () => {
         <p className="mt-[10px]">No news for today</p>
       )}
       {isLoading && <p className="mt-[10px]">is loading</p>}
-      <div className="flex gap-2 flex-wrap mt-[30px]">
+      <div className="flex gap-2 flex-wrap mt-[30px] justify-stretch">
         {news?.map((news) => {
           return (
             <NewsCard

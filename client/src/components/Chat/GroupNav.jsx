@@ -8,7 +8,7 @@ const GroupNav = ({ room, setRoom }) => {
 
   const listItemstyle = (roomList) => {
     return `p-[10px] border rounded-md cursor-pointer w-full ${
-      roomList == param.room ? "bg-gray-100 dark:bg-main-black" : ""
+      roomList == param.room ? "bg-white dark:bg-secondary-black" : ""
     }`;
   };
   return (
@@ -29,7 +29,7 @@ const GroupNav = ({ room, setRoom }) => {
             </div>
             <div>
               <h1 className="font-bold text-md">General</h1>
-              <p className="font-medium text-sm text-gray-600 dark:text-white">
+              <p className="font-medium text-sm text-gray-600 dark:text-white ">
                 General question about finance
               </p>
             </div>

@@ -40,7 +40,7 @@ const PieChart = () => {
   };
 
   return (
-    <div className="border rounded-2xl p-6 mt-[30px] h-fit">
+    <div className="border rounded-2xl mt-[30px] h-fit bg-white dark:bg-secondary-black p-6">
       <h1 className="text-2xl font-bold mb-[10px]">This month</h1>
       <Chart options={data.options} series={data.series} type="pie" />
     </div>

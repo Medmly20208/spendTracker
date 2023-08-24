@@ -17,6 +17,11 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 //rtk query
 import { useLoginMutation } from "../api/apiSlice";
 
+//assets
+import carouselOne from "../assets/images/carouselOne.jpg";
+import carouselTwo from "../assets/images/carouselTwo.jpg";
+import carouselThree from "../assets/images/carouselThree.jpg";
+
 const inputClass =
   "mt-[5px] mb-[8px] outline-none w-full border border-gray-400 rounded-md p-[8px] text-black   ";
 
@@ -60,7 +65,7 @@ const Login = () => {
           <Carousel settings={settings}>
             <div className=" w-[50vw] h-[100vh]">
               <CarouselItem
-                image={"carouselOne.jpg"}
+                image={carouselOne}
                 text={
                   "Our expense tracker platform empowers you to take control of your finances effortlessly. With user-friendly features and intuitive functionality"
                 }
@@ -69,7 +74,7 @@ const Login = () => {
             </div>
             <div className=" w-[50vw] h-[100vh]">
               <CarouselItem
-                image={"carouselTwo.jpg"}
+                image={carouselTwo}
                 text={
                   "Simplify your expense tracking process and pave the way for better financial success with our platform. By automating the import of transaction data from your financial accounts, categorizing expenses, and generating insightful reports"
                 }
@@ -80,7 +85,7 @@ const Login = () => {
             </div>
             <div className=" w-[50vw] h-[100vh]">
               <CarouselItem
-                image={"carouselThree.jpg"}
+                image={carouselThree}
                 text={
                   "Stay informed, stay in control, and stay ahead of your finances with our comprehensive expense tracker platform. Through real-time expense tracking"
                 }

@@ -5,7 +5,7 @@ const default_image =
 
 const NewsCard = ({ title, image, snippet, link }) => {
   return (
-    <div className="w-[350px] p-[10px] flex flex-col gap-4 h-[380px] justify-between">
+    <div className="w-[350px] p-3 flex flex-col gap-4 min-h-[380px]  justify-between border rounded-xl bg-white dark:bg-secondary-black">
       <div>
         <img
           onError={(e) => (e.target.src = default_image)}

@@ -145,7 +145,7 @@ const ChartCard = () => {
   };
 
   return (
-    <div className="mt-[50px]">
+    <div className="mt-[50px] bg-white dark:bg-secondary-black p-6 rounded-2xl border">
       <div className="flex justify-between items-center flex-wrap">
         <h1 className="text-2xl font-bold mb-[10px]">Chart</h1>
         <div className="flex gap-[20px] flex-wrap">

@@ -2,7 +2,6 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import { lazy } from "react";
 
 //components
-import Notifications from "../components/Notifications";
 import Dashboard from "../components/Dashboard";
 import Profile from "../components/Profile";
 import Reports from "../components/Reports";

@@ -34,8 +34,8 @@ const Dashboard = () => {
         <Icon icon={"solar:calendar-linear"} className="text-[25px] " />
         <p className="dark:text-white">{getCurrentDate()}</p>
       </div>
-      <div className="grid grid-rows-1 xl:grid-cols-[minmax(700px,_1fr)_400px] gap-[0px]">
-        <div className="flex flex-col gap-[25px] ">
+      <div className="grid grid-rows-1 xl:grid-cols-[minmax(300px,_1fr)_400px] gap-[10px] relative">
+        <div className="flex flex-col gap-[25px] border  rounded-2xl bg-white dark:bg-secondary-black p-4 lg:p-6 max-w-full">
           <TodayData />
           <WeekData />
           <MonthData />
