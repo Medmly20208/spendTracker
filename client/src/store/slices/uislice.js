@@ -23,10 +23,6 @@ export const uiSlice = createSlice({
       state.messages = state.messages.filter((item) => payload.id != item.id);
     },
     toggleMode: (state, { payload }) => {
-      if (payload?.type) {
-        state.isDarkMode = payload.type;
-        return;
-      }
       state.isDarkMode = !state.isDarkMode;
       localStorage.setItem("isDarkMode", state.isDarkMode);
     },

@@ -36,7 +36,7 @@ const Table = (props) => {
           {props.expenses &&
             props.expenses.map((expense, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} className="border-b-2">
                   <td className="text-center p-[1em]">{expense.title}</td>
                   <td className="text-center p-[1em]">${expense.amount}</td>
                   <td className="text-center p-[1em]">{expense.category}</td>

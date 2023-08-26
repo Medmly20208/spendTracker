@@ -106,7 +106,7 @@ const Profile = () => {
             </button>
           </div>
         </div>
-        <div className="border p-6 flex flex-col items-center gap-4 bg-white rounded-lg h-full dark:bg-secondary-black">
+        <div className="border p-6 flex flex-col items-center gap-4 bg-white rounded-lg h-full w-full sm:w-fit dark:bg-secondary-black">
           <div className="box-content relative bg-red-500 cursor-pointer h-[2em] w-[2em] p-[0.2em] rounded-full text-white flex justify-center items-center">
             <p>{profileImgContent}</p>
           </div>
