@@ -5,6 +5,8 @@ import { useGetAllBlogPostsQuery } from "../../../api/apiSlice";
 
 //components
 import BlogCard from "./BlogCard";
+import IsLoading from "../../IsLoading";
+import NoData from "../../NoData";
 
 const AllBlogs = () => {
   const blogContent = [
@@ -46,8 +48,8 @@ const AllBlogs = () => {
 
   return (
     <div className="flex gap-2 flex-wrap justify-center lg:justify-start">
-      {isLoading && "loading..."}
-
+      {isLoading && <IsLoading />}
+      {data?.data.length === 0 && <NoData />}
       {data?.data?.map((blog) => {
         return <BlogCard {...blog} />;
       })}

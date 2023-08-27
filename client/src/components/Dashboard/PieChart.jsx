@@ -2,13 +2,14 @@ import React from "react";
 
 //components
 import Chart from "../Chart";
+import IsLoading from "../IsLoading";
+import NoData from "../NoData";
 
+//react-redux
 import { useSelector } from "react-redux";
 
 const PieChart = () => {
   const monthData = useSelector((content) => content.ui.monthData);
-
-  console.log(monthData);
 
   const Amounts = {
     Food: 0,
@@ -42,7 +43,11 @@ const PieChart = () => {
   return (
     <div className="border rounded-2xl mt-[30px] h-fit bg-white dark:bg-secondary-black p-6">
       <h1 className="text-2xl font-bold mb-[10px]">This month</h1>
-      <Chart options={data.options} series={data.series} type="pie" />
+      {monthData.length == 0 && <NoData />}
+
+      {monthData.length > 0 && (
+        <Chart options={data.options} series={data.series} type="pie" />
+      )}
     </div>
   );
 };

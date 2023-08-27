@@ -38,7 +38,7 @@ const LatestCard = ({ title, category, price, date }) => {
     },
   };
   return (
-    <div className="flex gap-[8px] items-center min-w-[300px] h-[100px] p-6 rounded shadow-md">
+    <div className="flex gap-[8px] items-center min-w-[300px] h-[70px] p-2 rounded shadow-md">
       <div
         className="w-[50px] h-full  rounded-md flex justify-center items-center"
         style={{

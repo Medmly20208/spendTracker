@@ -21,6 +21,7 @@ import {
 
 //components
 import CommentItem from "./CommentItem";
+import IsLoading from "../../IsLoading";
 
 //REDUX
 import { addNewMessage } from "../../../store/slices/uislice";
@@ -91,7 +92,7 @@ const BlogPage = () => {
 
   return (
     <div className=" max-w-[800px] m-auto flex flex-col gap-4">
-      {isLoading && "isLoading"}
+      {isLoading && <IsLoading />}
 
       {!isLoading && (
         <>

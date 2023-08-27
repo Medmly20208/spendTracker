@@ -6,6 +6,8 @@ import CardContainer from "../CardContainer";
 import Modal from "../Modal";
 import NewExpenseForm from "../NewExpenseForm";
 import Table from "./Table";
+import NoData from "../NoData";
+import IsLoading from "../IsLoading";
 
 //rtk
 import { useGetExpensesQuery } from "../../api/apiSlice";
@@ -51,7 +53,7 @@ const Reports = () => {
           </Modal>
         )}
         <div className="w-full mt-[10px] ">
-          <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-gray-100 my-[10px] rounded-lg dark:bg-secondary-black dark:text-white">
+          <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-white my-[10px] rounded-lg dark:bg-secondary-black dark:text-white">
             <div>
               <input
                 type="text"
@@ -108,8 +110,8 @@ const Reports = () => {
         </div>
 
         <Table expenses={expenses?.data} />
-        {isLoading && <p>is Loading</p>}
-        {expenses?.data.length === 0 && <p>No results</p>}
+        {isLoading && <IsLoading />}
+        {expenses?.data.length === 0 && <NoData />}
       </CardContainer>
     </>
   );

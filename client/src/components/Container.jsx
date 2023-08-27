@@ -18,7 +18,9 @@ import { useSelector } from "react-redux";
 const Container = () => {
   const navigate = useNavigate();
 
-  const [isNavDisplayed, setIsNavDisplayed] = useState(true);
+  const [isNavDisplayed, setIsNavDisplayed] = useState(
+    window.innerWidth > 400 ? true : false
+  );
   const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false);
 
   const isDarkMode = useSelector((content) => content.ui.isDarkMode);

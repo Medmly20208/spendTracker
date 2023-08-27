@@ -1,6 +1,6 @@
 import React from "react";
 
-import dashboardTwo from "../assets/images/dashboardTwo.jpg";
+import dashboardTwo from "../assets/images/dashboard.png";
 
 const Hero = () => {
   return (

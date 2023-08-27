@@ -22,8 +22,8 @@ const Table = (props) => {
 
   return (
     <div className="overflow-auto w-full mt-[20px]">
-      <table className="w-full min-w-[400px] max-h-[100px] overflow-auto">
-        <thead className="border-b-2 bg-gray-100 dark:bg-secondary-black">
+      <table className="w-full min-w-[400px] max-h-[100px] overflow-auto ">
+        <thead className="border-b-2 bg-white dark:bg-secondary-black">
           <tr>
             <th className="p-[1em]">Title</th>
             <th className="p-[1em]">Amount</th>

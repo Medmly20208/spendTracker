@@ -7,6 +7,7 @@ import {
   DocumentChartBarIcon,
   NewspaperIcon,
   ChatBubbleOvalLeftEllipsisIcon,
+  PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 
 //iconify
@@ -99,7 +100,7 @@ const Nav = ({ isNavDisplayed, ToggleNav }) => {
               path="Blog"
               setSelectedNav={setSelectedNav}
               selectedNav={selectedNav}
-              icon={<NewspaperIcon className="!w-[1.5em]" />}
+              icon={<PencilSquareIcon className="!w-[1.5em]" />}
               subNavs={["all", "myBlog"]}
             />
             <div></div>

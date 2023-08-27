@@ -5,21 +5,15 @@ import React, { useState } from "react";
 import Modal from "../../Modal";
 import NewBlogForm from "./CreateBlog";
 import Table from "./Table";
+import NoData from "../../NoData";
+import IsLoading from "../../IsLoading";
 
 //rtk
-import {
-  useGetExpensesQuery,
-  useGetBlogPostsByUserIdQuery,
-} from "../../../api/apiSlice";
+import { useGetBlogPostsByUserIdQuery } from "../../../api/apiSlice";
 
-//utils
-import { addDays } from "../../../utils";
-
-const Reports = () => {
+const Blogs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [startDate, setStartDate] = useState(addDays(new Date(), -10));
-  const [endDate, setEndDate] = useState(addDays(new Date(), 0));
-  const [category, setCategory] = useState("All");
+
   const [search, setSearch] = useState("");
 
   const {
@@ -33,8 +27,6 @@ const Reports = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  console.log(blogs);
 
   return (
     <div className="mt-[40px]">
@@ -51,7 +43,7 @@ const Reports = () => {
         </Modal>
       )}
       <div className="w-full mt-[10px] ">
-        <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-gray-100 my-[10px] rounded-lg dark:bg-secondary-black dark:text-white">
+        <form className="flex gap-[20px] p-[10px] flex-wrap items-center bg-white my-[10px] rounded-lg dark:bg-secondary-black dark:text-white">
           <div>
             <input
               type="text"
@@ -66,10 +58,10 @@ const Reports = () => {
       </div>
 
       <Table blogs={blogs?.data} />
-      {isLoading && <p>is Loading</p>}
-      {blogs?.data.length === 0 && <p>No results</p>}
+      {isLoading && <IsLoading />}
+      {blogs?.data.length === 0 && <NoData />}
     </div>
   );
 };
 
-export default Reports;
+export default Blogs;

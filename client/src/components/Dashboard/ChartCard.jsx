@@ -45,7 +45,7 @@ const ChartCard = () => {
       Food: 0,
       Transportation: 0,
       Other: 0,
-      Entertainement: 0,
+      Entertainment: 0,
       Shelter: 0,
       Total: 0,
     };
@@ -83,7 +83,7 @@ const ChartCard = () => {
       },
       {
         name: "Entertainement",
-        data: Object.values(chartValues).map((item) => item.Entertainement),
+        data: Object.values(chartValues).map((item) => item.Entertainment),
       },
     ],
     options: {

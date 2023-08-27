@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../SectionTitle";
 import CardContainer from "../CardContainer";
 import NewsCard from "./NewsCard";
+import IsLoading from "../IsLoading";
 
 //axios
 import axios from "axios";
@@ -38,7 +39,8 @@ const News = () => {
       {!isLoading && news.length === 0 && (
         <p className="mt-[10px]">No news for today</p>
       )}
-      {isLoading && <p className="mt-[10px]">is loading</p>}
+
+      {isLoading && <IsLoading />}
       <div className="flex gap-2 flex-wrap mt-[30px] justify-stretch">
         {news?.map((news) => {
           return (
