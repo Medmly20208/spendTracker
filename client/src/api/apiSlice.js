@@ -81,6 +81,14 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["blog"],
     }),
+    updateBlogPost: builder.mutation({
+      query: (blog) => ({
+        url: `/blogs/${blog.id}`,
+        method: "PATCH",
+        body: blog.blog,
+      }),
+      invalidatesTags: ["blog"],
+    }),
 
     getAllBlogPosts: builder.query({
       query: (blog) => ({
@@ -97,7 +105,13 @@ export const apiSlice = createApi({
       }),
       providesTags: ["blog"],
     }),
-
+    getBlogPostsByUserId: builder.query({
+      query: (blog) => ({
+        url: `/blogs/users/${blog.userId}?title=${blog.title}`,
+        method: "get",
+      }),
+      providesTags: ["blog"],
+    }),
     likePostsById: builder.mutation({
       query: (like) => ({
         url: `/blogs/${like.postId}/likes`,
@@ -112,6 +126,13 @@ export const apiSlice = createApi({
         url: `/blogs/${comment.postId}/comments`,
         method: "PATCH",
         body: comment,
+      }),
+      invalidatesTags: ["blog"],
+    }),
+    deleteBlogById: builder.mutation({
+      query: (blog) => ({
+        url: `/blogs/${blog.id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["blog"],
     }),
@@ -154,6 +175,9 @@ export const {
   useGetBlogPostsByIdQuery,
   useLikePostsByIdMutation,
   useCommentPostsByIdMutation,
+  useGetBlogPostsByUserIdQuery,
+  useDeleteBlogByIdMutation,
+  useUpdateBlogPostMutation,
 } = apiSlice;
 
 export const { useLoginMutation, useRegisterMutation } = authSlice;

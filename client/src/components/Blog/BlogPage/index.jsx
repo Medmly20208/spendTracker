@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 //icons
 import {
@@ -22,9 +22,17 @@ import {
 //components
 import CommentItem from "./CommentItem";
 
+//REDUX
+import { addNewMessage } from "../../../store/slices/uislice";
+import { useDispatch } from "react-redux";
+
+//uuid4
+import { v4 as uuidv4 } from "uuid";
+
 const BlogPage = () => {
   const params = useParams();
   const comment = useRef();
+  const dispatch = useDispatch();
 
   const { data: blogDetails, isLoading } = useGetBlogPostsByIdQuery({
     id: params.blogId,
@@ -32,8 +40,10 @@ const BlogPage = () => {
 
   const [likePostsById] = useLikePostsByIdMutation();
 
-  const [commentPostsById, { isLoading: isLoadingPostingComment }] =
-    useCommentPostsByIdMutation();
+  const [
+    commentPostsById,
+    { isLoading: isLoadingPostingComment, isSuccess: isSuccessfullycommeneted },
+  ] = useCommentPostsByIdMutation();
 
   const likePostHandler = () => {
     likePostsById({
@@ -68,8 +78,19 @@ const BlogPage = () => {
     date?.split("T")[1].slice(6, 8),
   ];
 
+  useEffect(() => {
+    if (isSuccessfullycommeneted) {
+      dispatch(
+        addNewMessage({
+          message: "comment added successfully",
+          id: uuidv4(),
+        })
+      );
+    }
+  }, [isLoadingPostingComment]);
+
   return (
-    <div className="w-[90vw] max-w-[800px] m-auto flex flex-col gap-4">
+    <div className=" max-w-[800px] m-auto flex flex-col gap-4">
       {isLoading && "isLoading"}
 
       {!isLoading && (
@@ -129,7 +150,7 @@ const BlogPage = () => {
                   isLoadingPostingComment ? () => {} : commentPostHandler
                 }
               >
-                Add comment
+                {isLoadingPostingComment ? "isLoading" : "Add comment"}
               </button>
             </div>
           </div>

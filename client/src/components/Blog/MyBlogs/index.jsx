@@ -7,7 +7,10 @@ import NewBlogForm from "./CreateBlog";
 import Table from "./Table";
 
 //rtk
-import { useGetExpensesQuery } from "../../../api/apiSlice";
+import {
+  useGetExpensesQuery,
+  useGetBlogPostsByUserIdQuery,
+} from "../../../api/apiSlice";
 
 //utils
 import { addDays } from "../../../utils";
@@ -20,19 +23,18 @@ const Reports = () => {
   const [search, setSearch] = useState("");
 
   const {
-    data: expenses,
+    data: blogs,
     refetch,
     isLoading,
-  } = useGetExpensesQuery({
+  } = useGetBlogPostsByUserIdQuery({
     userId: localStorage.getItem("id"),
-    endDate,
-    startDate,
-    category,
-    search,
+    title: search,
   });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  console.log(blogs);
 
   return (
     <div className="mt-[40px]">
@@ -63,9 +65,9 @@ const Reports = () => {
         </form>
       </div>
 
-      <Table expenses={expenses?.data} />
+      <Table blogs={blogs?.data} />
       {isLoading && <p>is Loading</p>}
-      {expenses?.data.length === 0 && <p>No results</p>}
+      {blogs?.data.length === 0 && <p>No results</p>}
     </div>
   );
 };

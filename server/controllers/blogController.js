@@ -30,7 +30,13 @@ exports.getAllBlogs = catchAsync(async (req, res) => {
 });
 
 exports.getBlogByUserId = catchAsync(async (req, res) => {
-  console.log(req.params);
+  let queryObj = req.query;
+
+  if (queryObj.title?.length > 0) {
+    queryObj.title = { $regex: req.query.title, $options: "i" };
+  } else {
+    queryObj = {};
+  }
 
   if (!req.params.userId) {
     return res.status(401).json({
@@ -38,7 +44,7 @@ exports.getBlogByUserId = catchAsync(async (req, res) => {
       message: "userId is undefined",
     });
   }
-  const blog = await blogModel.find({ userId: req.params.userId });
+  const blog = await blogModel.find({ userId: req.params.userId, ...queryObj });
 
   res.status(200).json({
     status: "success",
