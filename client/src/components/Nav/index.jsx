@@ -3,9 +3,7 @@ import React, { useState } from "react";
 // heroIcon
 import {
   PresentationChartLineIcon,
-  BellIcon,
   UserCircleIcon,
-  ArrowLeftOnRectangleIcon,
   DocumentChartBarIcon,
   NewspaperIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -96,6 +94,13 @@ const Nav = ({ isNavDisplayed, ToggleNav }) => {
               setSelectedNav={setSelectedNav}
               selectedNav={selectedNav}
               icon={<NewspaperIcon className="!w-[1.5em]" />}
+            />
+            <NavItem
+              path="Blog"
+              setSelectedNav={setSelectedNav}
+              selectedNav={selectedNav}
+              icon={<NewspaperIcon className="!w-[1.5em]" />}
+              subNavs={["all", "myBlog"]}
             />
             <div></div>
           </div>

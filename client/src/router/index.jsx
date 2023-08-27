@@ -8,6 +8,10 @@ import Reports from "../components/Reports";
 import Chat from "../components/Chat";
 import News from "../components/News";
 import ChatItem from "../components/Chat/ChatItem";
+import MyBlogs from "../components/Blog/MyBlogs";
+import AllBlogs from "../components/Blog/Allblogs";
+import BlogPage from "../components/Blog/BlogPage";
+import Blog from "../components/Blog";
 
 //pages
 import Landing from "../pages/Landing";
@@ -63,6 +67,26 @@ export const router = createBrowserRouter([
       {
         path: "news",
         element: <News />,
+      },
+
+      {
+        path: "blog",
+        element: <Blog />,
+        children: [
+          {
+            path: "all",
+
+            element: <AllBlogs />,
+          },
+          {
+            path: "myblog",
+            element: <MyBlogs />,
+          },
+          {
+            path: ":blogId",
+            element: <BlogPage />,
+          },
+        ],
       },
     ],
   },
